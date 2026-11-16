@@ -1,0 +1,30 @@
+<!--title:How it works-->
+<div class="eyebrow">How it works</div>
+<h1>From a sensor reading to a timetable decision</h1>
+<div class="tile" style="display:flex;gap:18px;align-items:flex-start;margin-top:24px">
+  <div class="avatar">PE</div>
+  <div><h3>Who it's for: the PE teacher or duty officer at an Almaty school</h3>
+  <p class="muted" style="margin:0">Almaty sits in a bowl under the Zailiysky Alatau. From October to April, coal smoke from private-housing districts gets trapped under cold-air inversions. Children breathe faster than adults and count as a sensitive group. The teacher decides the afternoon before, or first thing in the morning, whether PE and recess go outdoors. This tool gives a number and a verdict at that moment.</p></div>
+</div>
+<div class="sec"><div class="sec-title">Pipeline</div>
+<div class="steps">
+  <div class="tile"><h3>Real measurements</h3><p class="muted" style="margin:0">Daily PM2.5 from OpenAQ: the US Embassy reference monitor (Apr 2020 – Nov 2025) and the School No.182 low-cost sensor (Dec 2025 – now). We keep only days with at least 18 of 24 hours measured.</p></div>
+  <div class="tile"><h3>Weather</h3><p class="muted" style="margin:0">Open-Meteo ERA5 archive for training, and the Open-Meteo forecast for live use: temperature, minimum temperature, humidity, wind, rain/snow, pressure and cloud, for today <i>and</i> tomorrow.</p></div>
+  <div class="tile"><h3>Features known on the day</h3><p class="muted" style="margin:0">Today's and yesterday's PM2.5, the 7-day mean, the trend, today's weather and tomorrow's forecast, season, heating-season flag and weekend.</p></div>
+  <div class="tile"><h3>Split by date, never shuffled</h3><p class="muted" style="margin:0">Train ≤ Sep 2024 · validation season Oct 2023 – Sep 2024 (used only to choose the warning cut-off) · test Oct 2024 – Nov 2025 · second test at School No.182.</p></div>
+  <div class="tile"><h3>Model and decision</h3><p class="muted" style="margin:0">Ridge regression beat gradient boosting and the persistence baseline. Warning: INDOORS if the forecast is above the cut-off, OUTDOORS-LIGHT between 15 and the cut-off, OUTDOORS below 15.</p></div>
+</div></div>
+<div class="sec"><div class="sec-title">What moves the forecast</div><p class="sec-sub">Ridge weights on standardised inputs. A positive weight means the input raises tomorrow's forecast.</p><div class="tablewrap"><table id="t-coef"></table></div></div>
+<div class="sec"><div class="sec-title">Honest limits</div>
+<div class="row2">
+  <div class="tile"><h3>One reference station</h3><p class="muted" style="margin:0">The embassy monitor stopped reporting in Nov 2025, so the test period ends there. The school sensor is a low-cost device and is less accurate than a reference monitor.</p></div>
+  <div class="tile"><h3>Weather in training is reanalysis</h3><p class="muted" style="margin:0">Training uses what the weather actually was, but live use relies on a forecast. Real errors will be somewhat larger.</p></div>
+  <div class="tile"><h3>Sudden events</h3><p class="muted" style="margin:0">Snow fronts, wind and fireworks cause the biggest misses (see Results).</p></div>
+  <div class="tile"><h3>Not medical advice</h3><p class="muted" style="margin:0">This project is a prototype and is not medical advice. Schools should follow official guidance from Kazhydromet and health authorities.</p></div>
+</div></div>
+<div class="sec"><div class="sec-title">Sources</div><div class="tile muted" style="font-size:14px">OpenAQ API v3 (US Embassy Almaty / AirNow; AirGradient School No.182) · Open-Meteo Air Quality (Copernicus CAMS), Historical Forecast, ERA5 Archive and Forecast APIs · US EPA PM2.5 AQI breakpoints · scikit-learn, PyTorch, pandas, Chart.js · Claude (Anthropic) used as a coding assistant. Code on GitHub.</div></div>
+<script>
+const names = {pm25_today:"Today's PM2.5", pm25_yday:"Yesterday's PM2.5", pm25_7d:"PM2.5, 7-day mean", trend:"Change since yesterday", temp_today:"Today's temperature", temp_tmrw:"Tomorrow's temperature", temp_min_today:"Today's min temperature", temp_min_tmrw:"Tomorrow's min temperature", rh_today:"Today's humidity", rh_tmrw:"Tomorrow's humidity", wind_today:"Today's wind", wind_tmrw:"Tomorrow's wind", precip_today:"Today's rain/snow", precip_tmrw:"Tomorrow's rain/snow", pressure_today:"Today's pressure", pressure_tmrw:"Tomorrow's pressure", cloud_today:"Today's cloud", cloud_tmrw:"Tomorrow's cloud", season_sin:"Season (phase)", season_cos:"Season", heating:"Heating season", weekend_tmrw:"Tomorrow is a weekend"};
+const C = DATA.station.coef || {}, mx = Math.max(...Object.values(C).map(Math.abs));
+$("t-coef").innerHTML = table([["Input"], ["Weight", "num"]], Object.entries(C).map(([k, v]) => `<tr><td>${names[k] || k}</td><td class="num"><span style="display:inline-block;height:6px;border-radius:3px;background:${v > 0 ? "var(--red)" : "var(--green)"};width:${Math.abs(v) / mx * 120}px;margin-right:10px;vertical-align:middle"></span>${v > 0 ? "+" : ""}${fmt(v, 2)}</td></tr>`));
+</script>

@@ -3,148 +3,156 @@
 **Track:** Climate
 **Team:** _[names]_
 
-**Demo page:** _[GitHub Pages link]_ · **Video:** _[link]_
+**Demo site:** _[GitHub Pages link]_ · **Video:** _[link]_
 
 > This project is a prototype and is not medical advice.
 
 ## The problem
 
-Every heating season (October–April), Almaty's mountain-bowl geography traps coal smoke from heating under cold-air inversions, and PM2.5 climbs to levels that are unhealthy for children. The person who decides whether tomorrow's PE lesson and recess happen outdoors is a school duty officer or PE teacher. They make that call the afternoon before, usually by guessing from today's sky. Children are a *sensitive group*, so a wrong "outdoors" call means 25 kids exercising in bad air.
+Every heating season (October–April), Almaty's mountain-bowl geography traps coal smoke under cold-air inversions, and PM2.5 regularly goes above 100 µg/m³. The person who decides whether tomorrow's PE lesson and recess happen outdoors is a school duty officer or PE teacher, and they decide the afternoon before. Children are a *sensitive group*, and the free air-quality data most apps show (CAMS model estimates) **misses 43% of Almaty's real smog days**.
 
 ## What we built
 
-A next-day PM2.5 forecast for central Almaty that turns into a three-level school decision.
+A next-day PM2.5 forecast trained on **real measurements**, which becomes a three-level school decision.
 
-- **In:** today's hourly PM2.5, the last 7 days of PM2.5, today's weather and **tomorrow's weather forecast** (all fetched automatically from Open-Meteo).
-- **Out:** tomorrow's daily-mean PM2.5 and a verdict: **INDOORS** (forecast above 34.0 µg/m³), **OUTDOORS, LIGHT** (15–34) or **OUTDOORS** (under 15).
+- **In:** a school's recent PM2.5 sensor readings (OpenAQ), today's weather and tomorrow's weather forecast (Open-Meteo).
+- **Out:** tomorrow's daily-mean PM2.5 and a verdict: **INDOORS** (above 37.5 µg/m³), **OUTDOORS, LIGHT** (15–37.5) or **OUTDOORS** (under 15).
+- **Live example:** from School No.182's sensor data up to 15 Nov 2026, the forecast for 16 Nov is **51.6 µg/m³, INDOORS**.
 
-```
-$ python predict.py
-Almaty, forecast for 2026-11-17
-  Today's PM2.5:      24.4 ug/m3
-  Tomorrow forecast:  30.2 ug/m3  (warn above 34.0)
-  Decision:           OUTDOORS, LIGHT  - Outdoor recess is fine. Keep long or intense PE indoors for children with asthma.
-```
-
-The demo page (`docs/index.html`) shows the live forecast card, all results, the forecast-vs-reality chart and the failure cases.
+The demo site (5 pages, in `docs/`) has these pages:
+- **Today:** the live verdict, the last 72 hours of the school sensor and the last 8 days.
+- **Real-station results:** the test results, explained.
+- **Model data vs reality:** how far the CAMS estimates are from real measurements.
+- **LSTM experiment:** the deep model compared with the deployed one.
+- **How it works:** the pipeline, the model weights and the limits.
 
 ## What we added
 
-We started from the suggested project **4.3.2 Next-day air quality forecast** and added the following.
+We started from suggested project **4.3.2 Next-day air quality forecast** and added the following.
 
-1. **Our own setting and user:** Almaty, where we live, and a specific decision: a school moving PE and recess indoors.
-2. **A decision-based evaluation.** We don't stop at error scores. We count smog days caught, missed and falsely alarmed, and we picked the warning cut-off on a *separate validation season*. We weighted a miss as 3× worse than a false alarm, because a missed smog day harms children and a false alarm only costs one outdoor lesson.
-3. **Our own question: does a deep sequence model (LSTM) help where it matters?** It wins on average but **loses on smog days**, so we deploy the simpler Ridge model.
-4. **A live tool** (`predict.py`) that issues tomorrow's verdict from today's data.
+1. **Our own city and user:** Almaty, where we live, and a school deciding whether PE and recess move indoors.
+2. **Our own data:** real PM2.5 from the **US Embassy reference monitor** (2020–2025) and a test on a **different sensor at School No.182** that the model never saw (Dec 2025 – Nov 2026).
+3. **A decision-based evaluation.** We count smog days caught, missed and falsely alarmed. A miss counts as 3× worse than a false alarm, because children breathe bad air on a miss, while a false alarm costs one outdoor lesson. The warning cut-off was chosen on a validation season, never on the test data.
+4. **Our own questions:**
+   - How wrong is the free model data compared with reality? (Very: it misses 43% of smog days.)
+   - Does a deep LSTM help where it matters? (It wins on average but loses on smog days.)
 
 ## How it works
 
 **Data**
-- PM2.5: Open-Meteo Air Quality API (Copernicus CAMS model, hourly) for 43.24°N, 76.89°E, Aug 2022 – Nov 2026.
-- Weather: Open-Meteo Historical Forecast API, hourly: temperature, humidity, wind, precipitation, pressure and cloud cover.
-- Aggregated to **1,558 daily rows**. Two rows with missing PM2.5 were dropped. We first included boundary-layer height, but it only exists from Sep 2024, which silently cut our dataset in half, so we removed it.
+- **OpenAQ v3, US Embassy Almaty (AirNow reference monitor):** 1,752 daily values, Apr 2020 – Nov 2025. We kept the 1,501 days with at least 18 of 24 hours measured.
+- **OpenAQ v3, School No.182 (AirGradient low-cost sensor):** Dec 2025 – Nov 2026.
+- **Open-Meteo ERA5 archive (training) and forecast API (live):** daily temperature, minimum temperature, humidity, wind, rain/snow, pressure and cloud.
+- **Open-Meteo Air Quality API (CAMS model):** hourly, Aug 2022 – Nov 2026, used for the reality check and the LSTM experiment.
 
-**Features (all known by the afternoon of day *t*)**
-- Today's mean, peak and evening (18–24h) PM2.5; yesterday's PM2.5; the 7-day mean; today's trend.
-- Today's weather and tomorrow's weather forecast.
-- Season (sine/cosine of day of year), a heating-season flag and a weekend flag.
+**Features (all known on day *t*)**
+- PM2.5 today and yesterday, the 7-day mean and the change since yesterday.
+- Today's weather and tomorrow's forecast.
+- Season, a heating-season flag and a weekend flag.
 
-**Split**
-
-Split by date, never shuffled:
+**Split by date, never shuffled**
 
 | | Period | Days |
 |---|---|---|
-| Train | 2022-08-10 → 2025-09-30 | 1,148 |
-| Validation (cut-off choice only) | 2024-10-01 → 2025-09-30 (inside train) | |
-| **Test** | **2025-10-01 → 2026-11-14** | **410** |
+| Train | Apr 2020 – Sep 2024 | 804 |
+| Validation (cut-off choice only) | Oct 2023 – Sep 2024 (inside train) | |
+| **Test** | **Oct 2024 – Nov 2025** | **391** |
+| **Second test (new sensor)** | **School No.182, Dec 2025 – Nov 2026** | **129** |
 
-The test period covers one full heating season and the start of the current one.
-
-**Models compared**
-
+**Models**
 - Persistence baseline ("tomorrow = today") and a 7-day-average baseline.
-- Ridge regression: chosen for deployment because it is simple, explainable and best on smog days.
-- Gradient boosting (scikit-learn HistGradientBoosting).
-- **LSTM** (PyTorch): reads a 14-day sequence of PM2.5 and weather, combined with tomorrow's weather forecast. It has one LSTM layer (32 units), is trained with L1 loss and early stopping on the last 15% of the training period, and averages 3 random seeds.
+- **Ridge regression (deployed).**
+- Gradient boosting.
+- In the CAMS experiment, a **PyTorch LSTM** that reads 14-day sequences.
 
 ## Results
 
-All numbers are on the 410 test days the models never saw.
+**1. Embassy reference monitor, 391 held-out days**
 
-**Forecast error** (mean absolute error, µg/m³; lower is better)
+Mean absolute error in µg/m³; lower is better.
 
 | Model | All test days | Heating season |
 |---|---|---|
-| Persistence (tomorrow = today) · *baseline* | 4.39 | 5.24 |
-| 7-day average · *baseline* | 4.77 | 5.53 |
-| Ridge, today's data only | 3.73 | 4.43 |
-| Gradient boosting, today's data only | 3.96 | 4.72 |
-| **Ridge + tomorrow's weather forecast (deployed)** | **3.63** | **4.24** |
-| Gradient boosting + tomorrow's weather forecast | 3.88 | 4.60 |
-| **LSTM + tomorrow's weather forecast** | **3.48** | **4.00** |
+| Persistence (tomorrow = today) · *baseline* | 9.88 | 13.93 |
+| 7-day average · *baseline* | 10.32 | 14.52 |
+| Gradient boosting | 9.32 | 13.33 |
+| **Ridge (deployed)** | **9.24** | **11.92 (14% lower)** |
 
-The deployed model beats the persistence baseline by **17%** and the LSTM by **21%**. Adding tomorrow's weather forecast helps every model. Gradient boosting does *worse* than plain linear regression, probably because of the small dataset (about 1,100 training days).
+The school decision (88 real smog days, daily mean above 35.4 µg/m³):
 
-**The school decision** (45 smog days in the test period, where the daily mean was above 35.4 µg/m³)
-
-| Rule | Smog days caught | Missed | False alarms |
+| Rule | Caught | Missed | False alarms |
 |---|---|---|---|
-| Persistence: warn if today > 35.4 | 21 / 45 | 24 | 24 |
-| Ridge, warn if forecast > 35.4 | 28 / 45 | 17 | 16 |
-| **Ridge, warn if forecast > 34.0 (cut-off chosen on validation)** | **35 / 45** | **10** | **25** |
-| LSTM, warn if forecast > 34.0 | 28 / 45 | 17 | 15 |
+| Persistence: warn if today > 35.4 | 61 / 88 | 27 | 27 |
+| Ridge, warn if forecast > 35.4 | 75 / 88 | 13 | 28 |
+| **Ridge, warn if forecast > 37.5 (cut-off chosen on validation)** | **72 / 88** | **16** | **25** |
 
-With the same number of false alarms as the baseline (25 vs 24), our tool catches **14 more smog days** and cuts missed smog days from 24 to 10.
+With fewer false alarms than the baseline, the model catches **11 more smog days per year**.
 
-**LSTM vs Ridge: error by how polluted the air actually was**
+**2. School No.182: a new sensor, area and time period** (model frozen, never trained on it)
 
-| Model | Clean (< 15) | Moderate (15–35) | Smog (> 35) |
+| | Error | Smog days caught | False alarms |
 |---|---|---|---|
-| Persistence | 2.80 | 4.46 | 7.22 |
-| Ridge (deployed) | 2.32 | 3.84 | **4.97** |
-| LSTM | **2.26** | **3.36** | 6.69 |
+| Persistence | 15.37 | 59 / 68 | 10 |
+| **Our model** | **13.63** | **60 / 68** | **8** |
 
-The LSTM smooths out spikes. That makes it great on ordinary days but worse on exactly the days a school cares about, so the "cool" model isn't the right one here.
+The model still beats the baseline on a cheaper sensor in a different neighbourhood. Here the gain in the decision itself is small, because winter 2025–26 at this school had long, steady smog runs that persistence also handles well.
 
-**What drives the forecast** (permutation importance): today's evening PM2.5 (the heating peak), then tomorrow's minimum and mean temperature (cold nights mean more coal burning and stronger inversions), the 7-day average and air pressure.
+**3. Free model data vs reality** (1,057 days with both the embassy reading and CAMS)
+
+- The embassy monitor recorded **208 smog days**; CAMS shows only **119**, so it **misses 43%**.
+- CAMS reads 4.2 µg/m³ lower on average, with a typical daily error of 11.2 µg/m³ and a correlation of 0.65.
+- It's close in summer and far too low in winter, which is exactly when it matters.
+
+**4. LSTM experiment (CAMS data, 410 test days)**
+
+| Model | All days | Smog days (> 35) | Smog days caught |
+|---|---|---|---|
+| Persistence | 4.39 | 7.22 | 21 / 45 |
+| Ridge | 3.63 | **4.97** | **35 / 45** |
+| LSTM (14-day sequence) | **3.48** | 6.69 | 28 / 45 |
+
+The LSTM has the best average but smooths out spikes, so it does worse on the days a school cares about. We choose the model by the decision it supports.
+
+**What drives the forecast** (Ridge weights on standardised inputs):
+- **Tomorrow's temperature is the strongest input, at −17.4.** Colder means more coal burning and stronger inversions.
+- Today's temperature and air pressure come next. High pressure means stagnant air.
+- Today's and yesterday's PM2.5 follow.
 
 **Where it fails**
 
-| Day | Actual | Model | Persistence | Why |
-|---|---|---|---|---|
-| 2026-01-01 | 15.2 | 37.5 | 50.6 | 7.5 mm of snow/rain and wind washed the air clean overnight. The model still trusted the high evening PM2.5. |
-| 2025-12-31 | 50.6 | 31.0 | 33.4 | New Year's Eve: fireworks and holiday heating. Nothing in the weather predicts it. |
-| 2026-05-02 | 39.6 | 23.0 | 22.2 | A spring spike outside the heating season, probably dust carried by 6 km/h wind. The model has learned that "May = clean". |
-| 2025-12-07 | 26.8 | 42.9 | 48.2 | A sudden clean-up that persistence also missed. |
-
-In short, the model reacts a day late to sudden breaks in the weather and can't know about one-off events like fireworks.
+| Day | Measured | Forecast | Why |
+|---|---|---|---|
+| 2024-12-25 | 127.0 | 76.9 | An extreme spike on a still, freezing day (−8.8 °C, 2.8 km/h wind). A linear model pulls extremes toward the average. The verdict was still INDOORS. |
+| 2025-02-03 | 125.0 | 75.1 | Same pattern: −9.2 °C, a multi-day inversion. |
+| 2025-01-15 | 23.3 | 74.9 | A sudden clean-up (89.6 → 23.3) with no rain. The inversion broke, which daily-average weather doesn't capture. This was a false alarm. |
 
 **Honest limits**
-- PM2.5 here is a **model estimate (CAMS, about 11 km grid), not station measurements**. Almaty's ground stations often read much higher on winter evenings, especially in the lower districts. Our absolute levels are likely too low, and the next step is retraining on real station data.
-- In training, "tomorrow's weather" is the archived forecast/analysis, which is a bit more accurate than a real day-ahead forecast, so live errors will be somewhat larger.
-- We tested one location and one heating season plus the current one.
+- The embassy monitor stopped reporting in Nov 2025, so the main test period ends there.
+- The school sensor is low-cost and less accurate.
+- Training uses actual (reanalysis) weather for "tomorrow", but live use relies on a forecast, so live errors will be somewhat larger.
 
 ## What we'd do next
 
-1. Train and test on **real ground-station measurements** (Kazhydromet or the OpenAQ stations in Almaty) and compare with CAMS's own next-day forecast as a stronger baseline.
-2. Add **inversion strength** (the temperature difference between the city and the mountain stations) and run a separate forecast per district, since the lower, northern districts suffer most.
+1. Add **inversion strength** (the temperature difference between the city and a mountain station such as Shymbulak) and hourly wind, so the model can catch the breaks and the extreme spikes.
+2. Forecast **per district** using the dozens of school sensors in OpenAQ, and send each school its own verdict at 3 PM by Telegram.
 
 ## How to run
 
 ```bash
 pip install -r requirements.txt
-python train.py        # downloads data, trains, writes results.json + model.pkl (about 40 s on a laptop CPU)
-python predict.py      # tomorrow's forecast + school verdict
-python build_site.py   # rebuilds docs/index.html demo page
+export OPENAQ_API_KEY=...       # free key from openaq.org
+python train.py                 # CAMS data: baselines, Ridge, gradient boosting, LSTM -> results.json
+python predict.py               # live CAMS-based forecast -> forecast.json
+python openaq_fetch.py          # real station data -> data/openaq_*.csv
+python train_station.py         # real-station models, school test, CAMS vs reality, live school forecast
+python build_site.py            # builds the 5-page site in docs/
 ```
 
 ## Sources
 
-- Open-Meteo Air Quality API (Copernicus CAMS data): https://open-meteo.com/en/docs/air-quality-api
-- Open-Meteo Historical Forecast API: https://open-meteo.com/en/docs/historical-forecast-api
-- Open-Meteo Forecast API (live mode): https://open-meteo.com/en/docs
-- US EPA PM2.5 AQI breakpoints (35.4 µg/m³ = top of "Moderate"): https://www.epa.gov/aqi
-- Libraries: scikit-learn, PyTorch, pandas, NumPy, requests; Chart.js for the demo page.
-- AI tools: **Claude (Anthropic)** was used as a coding assistant to write and debug code and structure the write-up. We reviewed and can explain every part.
+- OpenAQ API v3 (US Embassy Almaty via AirNow; AirGradient sensor at School No.182): https://openaq.org
+- Open-Meteo: Air Quality API (Copernicus CAMS), Historical Forecast API, ERA5 Archive API and Forecast API: https://open-meteo.com
+- US EPA PM2.5 AQI breakpoints: https://www.epa.gov/aqi
+- Libraries: scikit-learn, PyTorch, pandas, NumPy, requests, Chart.js.
+- AI tools: **Claude (Anthropic)** was used as a coding assistant to write and debug code and structure this write-up. We reviewed and can explain every part.
 - Starting point: Veritas AI Hackathon 2026 Project Briefs, suggested project 4.3.2.

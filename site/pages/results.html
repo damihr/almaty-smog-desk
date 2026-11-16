@@ -1,0 +1,46 @@
+<!--title:Results-->
+<div class="eyebrow">Real-station results</div>
+<h1>Tested on air nobody had seen yet</h1>
+<p class="lede" id="lede"></p>
+
+<div class="tile"><div class="legend" id="lg1"></div><div class="chartbox"><canvas id="c-test"></canvas></div></div>
+
+<div class="sec"><div class="sec-title">Forecast error</div><p class="sec-sub">Mean absolute error in µg/m³ (lower is better). The baseline is "tomorrow will be the same as today", which is hard to beat for air quality.</p>
+<div class="tablewrap"><table id="t-mae"></table></div></div>
+
+<div class="sec"><div class="sec-title">The school decision</div><p class="sec-sub">A smog day is a daily mean above 35.4 µg/m³ (US EPA: unhealthy for sensitive groups, which includes children). We count a missed smog day as 3× worse than a false alarm and chose the warning cut-off on a <b>validation season</b> (Oct 2023 – Sep 2024), never on the test data.</p>
+<div class="tablewrap"><table id="t-dec"></table></div></div>
+
+<div class="sec"><div class="sec-title">Second test: a sensor the model never saw</div><p class="sec-sub" id="sch-sub"></p>
+<div class="row2">
+  <div class="tile"><div class="legend" id="lg2"></div><div class="chartbox sm"><canvas id="c-school"></canvas></div></div>
+  <div class="tablewrap" style="align-self:start"><table id="t-school"></table></div>
+</div></div>
+
+<div class="sec"><div class="sec-title">Where it fails</div><p class="sec-sub">The biggest misses on the embassy test set fall into two patterns. <b>Extreme spikes</b> (above 100 µg/m³, on still, freezing days) are under-forecast by about 50, because a linear model pulls extremes toward the average. It still says INDOORS on those days, so the decision is right even when the number is too low. <b>Sudden clean-ups</b> (15 Jan 2025: 90 → 23) happen when an inversion breaks before the change is visible in the daily weather.</p>
+<div class="tablewrap"><table id="t-worst"></table></div></div>
+
+<a class="next" href="reality.html"><span class="muted">Next</span><b>Model data vs reality →</b></a>
+<script>
+const S = DATA.station, P = "Persistence (tomorrow = today)", B = S.best_model;
+$("lede").innerHTML = `Trained on the US Embassy reference monitor from ${S.train_period[0]} to ${S.train_period[1]} (${S.n_train} days). Tested on <b>${S.test_period[0]} → ${S.test_period[1]}</b> (${S.n_test} days), split by date with no shuffling.`;
+$("lg1").innerHTML = legend([[css("--chart-actual"), "Measured"], [css("--ink"), "Our forecast"], [css("--red"), "35.4 µg/m³"]]);
+chart("c-test", () => ({ type: "line", data: { labels: S.series.date, datasets: [
+  line(S.series.actual, css("--chart-actual"), 2), line(S.series.model, css("--ink"), 1.4), limitLine(S.series.date.length, 35.4)] },
+  options: baseOpts("PM2.5 µg/m³", ["Measured", "Forecast", "Limit"]) }));
+$("t-mae").innerHTML = table([["Model"], ["All test days", "num"], ["Heating season", "num"], ["vs baseline (heating)", "num"]],
+  Object.keys(S.mae).map(k => { const g = (1 - S.mae_heating[k] / S.mae_heating[P]) * 100, base = k === P || k.startsWith("7-day");
+    return `<tr class="${k === B ? "hl" : ""} ${base ? "base" : ""}"><td>${k}${base ? " · baseline" : ""}${k === B ? " · deployed" : ""}</td><td class="num">${fmt(S.mae[k], 2)}</td><td class="num">${fmt(S.mae_heating[k], 2)}</td><td class="num">${k === P ? "–" : `<span class="delta ${g < 0 ? "bad" : ""}">${g > 0 ? "−" : "+"}${fmt(Math.abs(g), 0)}%</span>`}</td></tr>`; }));
+const decRows = obj => Object.entries(obj).map(([k, v]) => `<tr class="${k.includes("tuned") || (k !== P && obj === DATA.station.school.decision) ? "hl" : ""} ${k === P ? "base" : ""}"><td>${k === P ? "Persistence: warn if today > 35.4" : k.replace("cut", "warn if forecast >")}</td><td class="num">${v.caught}/${v.bad_days}</td><td class="num">${v.missed}</td><td class="num">${v.false_alarms}</td><td class="num">${fmt(v.recall * 100, 0)}%</td></tr>`);
+$("t-dec").innerHTML = table([["Rule"], ["Smog days caught", "num"], ["Missed", "num"], ["False alarms", "num"], ["Recall", "num"]], decRows(S.decision));
+const SC = S.school;
+$("sch-sub").innerHTML = `We froze the model trained on the embassy data and ran it on the low-cost AirGradient sensor at <b>School No.182</b> (${SC.period[0]} → ${SC.period[1]}, ${SC.n} complete days). That's a different sensor type, a different neighbourhood and a later time period.`;
+$("lg2").innerHTML = legend([[css("--chart-actual"), "School sensor"], [css("--ink"), "Forecast"]]);
+chart("c-school", () => ({ type: "line", data: { labels: SC.series.date, datasets: [
+  line(SC.series.actual, css("--chart-actual"), 2), line(SC.series.model, css("--ink"), 1.4), limitLine(SC.series.date.length, 35.4)] },
+  options: baseOpts("µg/m³", ["Measured", "Forecast", "Limit"]) }));
+$("t-school").innerHTML = table([["School No.182"], ["Error", "num"], ["Caught", "num"], ["False alarms", "num"]],
+  Object.keys(SC.mae).map((k, i) => { const v = Object.values(SC.decision)[i]; return `<tr class="${k === P ? "base" : "hl"}"><td>${k === P ? "Persistence" : "Our model"}</td><td class="num">${fmt(SC.mae[k], 2)}</td><td class="num">${v.caught}/${v.bad_days}</td><td class="num">${v.false_alarms}</td></tr>`; }));
+$("t-worst").innerHTML = table([["Day forecast"], ["Measured", "num"], ["Forecast", "num"], ["Persistence", "num"], ["Wind km/h", "num"], ["Rain/snow mm", "num"], ["Temp °C", "num"]],
+  S.worst_days.map(w => `<tr><td class="mono">${w.date}</td><td class="num">${fmt(w.actual)}</td><td class="num">${fmt(w.model)}</td><td class="num">${fmt(w.persistence)}</td><td class="num">${fmt(w.wind_tmrw)}</td><td class="num">${fmt(w.precip_tmrw)}</td><td class="num">${fmt(w.temp_tmrw)}</td></tr>`));
+</script>

@@ -1,0 +1,51 @@
+<!--title:Today-->
+<div class="eyebrow" id="eyebrow"></div>
+<h1>Should recess be outside?</h1>
+<p class="lede">A next-day PM2.5 forecast for Almaty schools, trained on <b>real measurements</b> from the US Embassy reference monitor and running live on the air sensor at School No.182.</p>
+
+<div class="hero">
+  <div class="tile dark" id="fc-main"></div>
+  <div class="tile" id="fc-side"></div>
+</div>
+
+<div class="row2 sec" style="margin-top:16px">
+  <div class="tile"><h3>Last 72 hours at School No.182</h3><p class="muted" style="font-size:13px;margin:0 0 12px">Hourly PM2.5, real sensor (OpenAQ). The evening spikes come from coal heating.</p><div class="chartbox sm"><canvas id="c-hours"></canvas></div></div>
+  <div class="tile"><h3>Daily average, last 8 days</h3><p class="muted" style="font-size:13px;margin:0 0 12px">Red bars are days above 35.4 µg/m³, where the air is unhealthy for children.</p><div class="chartbox sm"><canvas id="c-days"></canvas></div></div>
+</div>
+
+<div class="sec"><h2>Does it work?</h2><div class="row3" id="kpis"></div></div>
+
+<a class="next" href="results.html"><span class="muted">Next</span><b>Real-station results →</b></a>
+<script>
+const S = DATA.station, F = DATA.school_fc;
+const verdictInfo = {
+  "INDOORS": ["INDOORS", "Move PE and recess indoors. Keep windows closed during the evening heating peak."],
+  "OUTDOORS, LIGHT": ["LIGHT", "Outdoor recess is fine. Keep long or intense PE indoors for children with asthma."],
+  "OUTDOORS": ["OUTDOORS", "Air is expected to be clean. Normal outdoor activities."]}[F.verdict];
+$("eyebrow").textContent = `Forecast issued from data up to ${F.based_on} · AI + Climate track`;
+$("fc-main").innerHTML = `<span class="pill ${verdictInfo[0]}">${F.verdict}</span>
+  <div class="big">${fmt(F.pm25_tomorrow_forecast)}<span class="unit muted">µg/m³</span></div>
+  <p class="muted" style="margin:10px 0 18px">Forecast daily PM2.5 for <b style="color:var(--bg)">${dayName(F.for)}</b> at School No.182</p>
+  <p style="margin:0;font-size:16px">${verdictInfo[1]}</p>`;
+$("fc-side").innerHTML = `<h3>Inputs the model used</h3><p class="muted" style="font-size:13px">Ridge regression, trained on 804 days of embassy measurements</p>
+  <div class="kv"><span>PM2.5 on ${F.based_on}</span><span>${fmt(F.pm25_today)} µg/m³</span></div>
+  <div class="kv"><span>Warning above</span><span>${fmt(F.warning_cut)} µg/m³</span></div>
+  <div class="kv"><span>Forecast min temperature</span><span>${fmt(F.tomorrow_weather.temp_min)} °C</span></div>
+  <div class="kv"><span>Forecast wind</span><span>${fmt(F.tomorrow_weather.wind)} km/h</span></div>
+  <div class="kv"><span>Forecast rain / snow</span><span>${fmt(F.tomorrow_weather.precip)} mm</span></div>`;
+const H = F.hourly_recent;
+chart("c-hours", () => ({ type: "line", data: { labels: H.time, datasets: [
+  { ...line(H.pm25, css("--ink"), 1.5), fill: true, backgroundColor: css("--soft") }, limitLine(H.time.length, F.limit)] },
+  options: baseOpts("µg/m³", ["PM2.5", "Limit"]) }));
+const D = Object.entries(F.last_days);
+chart("c-days", () => ({ type: "bar", data: { labels: D.map(d => d[0].slice(5)), datasets: [
+  { data: D.map(d => d[1]), backgroundColor: D.map(d => d[1] > F.limit ? css("--red") : css("--ink")), borderRadius: 4, barPercentage: .7 }] },
+  options: baseOpts("µg/m³", ["Daily mean"]) }));
+const dP = S.decision["Persistence (tomorrow = today)"], dM = Object.entries(S.decision).find(([k]) => k.includes("tuned"))[1];
+const P = "Persistence (tomorrow = today)", cv = DATA.station.cams_vs_station;
+$("kpis").innerHTML = [
+  [`${dM.caught}/${dM.bad_days}`, `real smog days caught on held-out data (Oct 2024 – Nov 2025), vs ${dP.caught} for "tomorrow = today"`],
+  [`−${fmt((1 - S.mae_heating[S.best_model] / S.mae_heating[P]) * 100, 0)}%`, `forecast error in the heating season vs the baseline (${fmt(S.mae_heating[S.best_model])} vs ${fmt(S.mae_heating[P])} µg/m³)`],
+  [`${fmt((1 - cv.smog_days_cams / cv.smog_days_station) * 100, 0)}%`, `of real smog days are missed by the free CAMS model data most apps use`]
+].map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+</script>

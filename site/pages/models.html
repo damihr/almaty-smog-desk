@@ -1,0 +1,30 @@
+<!--title:LSTM experiment-->
+<div class="eyebrow">Our own question</div>
+<h1>Does a deep sequence model help where it matters?</h1>
+<p class="lede" id="lede"></p>
+<div class="row2">
+  <div class="tile"><h3>LSTM wins on average</h3><p class="muted" id="w1" style="margin:0"></p></div>
+  <div class="tile"><h3>…but loses on smog days</h3><p class="muted" id="w2" style="margin:0"></p></div>
+</div>
+<div class="sec tile"><h3>Error by how polluted the air really was</h3><p class="muted" style="font-size:13px;margin:0 0 12px">Mean absolute error, µg/m³. Lower is better.</p><div class="legend" id="lg"></div><div class="chartbox sm"><canvas id="c-lvl"></canvas></div></div>
+<div class="sec"><div class="sec-title">All models</div><p class="sec-sub">Same data, same date split, same test days.</p><div class="tablewrap"><table id="t-all"></table></div></div>
+<div class="sec tile"><h3>Test period: Ridge vs LSTM</h3><div class="legend" id="lg2"></div><div class="chartbox"><canvas id="c-ts"></canvas></div></div>
+<div class="sec callout"><b>Takeaway.</b><span>The LSTM smooths out spikes, which makes it great on ordinary days but worse on the days a school cares about. We chose the model by the decision it supports, not by the average score. Ridge is also easier for a teacher to trust because each input has a visible weight.</span></div>
+<a class="next" href="method.html"><span class="muted">Next</span><b>How it works →</b></a>
+<script>
+const R = DATA.cams, P = "Persistence (tomorrow = today)", L = "LSTM (14-day sequence), + tomorrow's weather forecast", B = R.best_model;
+const short = k => k.replace(", + tomorrow's weather forecast", " + tomorrow's weather").replace(" (14-day sequence)", " (14-day sequence)");
+$("lede").innerHTML = `Experiment on the CAMS dataset (4 years of hourly data, ${R.n_train} training days, ${R.n_test} test days from ${R.test_period[0]}). We compared a PyTorch LSTM that reads a 14-day sequence of PM2.5 and weather against linear and tree models.`;
+const lv = R.mae_by_level, lv_ = Object.keys(lv[B]);
+$("w1").textContent = `Lowest error across all test days: ${fmt(R.mae[L], 2)} vs ${fmt(R.mae[B], 2)} for Ridge and ${fmt(R.mae[P], 2)} for the baseline.`;
+$("w2").textContent = `On days that were really above 35.4 µg/m³, the LSTM's error is ${fmt(lv[L][lv_[2]], 2)}, worse than Ridge's ${fmt(lv[B][lv_[2]], 2)}. It also catches fewer smog days (${Object.entries(R.decision).find(([k]) => k.startsWith("LSTM"))[1].caught} vs ${Object.entries(R.decision).find(([k]) => k.includes("tuned"))[1].caught}).`;
+$("lg").innerHTML = legend([[css("--chart-actual"), "Persistence"], [css("--ink"), "Ridge"], [css("--blue"), "LSTM"]]);
+chart("c-lvl", () => ({ type: "bar", data: { labels: lv_, datasets: [P, B, L].map((k, i) => ({ data: lv_.map(l => lv[k][l]), backgroundColor: [css("--chart-actual"), css("--ink"), css("--blue")][i], borderRadius: 4 })) },
+  options: baseOpts("µg/m³", ["Persistence", "Ridge", "LSTM"]) }));
+$("t-all").innerHTML = table([["Model"], ["All days", "num"], ["Heating season", "num"], ["Smog days", "num"]],
+  Object.keys(R.mae).map(k => `<tr class="${k === B || k === L ? "hl" : ""} ${k === P || k.startsWith("7-day") ? "base" : ""}"><td>${short(k)}</td><td class="num">${fmt(R.mae[k], 2)}</td><td class="num">${fmt(R.mae_heating[k], 2)}</td><td class="num">${fmt(lv[k][lv_[2]], 2)}</td></tr>`));
+const S = R.series;
+$("lg2").innerHTML = legend([[css("--chart-actual"), "Actual (CAMS)"], [css("--ink"), "Ridge"], [css("--blue"), "LSTM"]]);
+chart("c-ts", () => ({ type: "line", data: { labels: S.date, datasets: [line(S.actual, css("--chart-actual"), 2), line(S.model, css("--ink"), 1.3), line(S.lstm, css("--blue"), 1.2, [4, 3]), limitLine(S.date.length, 35.4)] },
+  options: baseOpts("µg/m³", ["Actual", "Ridge", "LSTM", "Limit"]) }));
+</script>

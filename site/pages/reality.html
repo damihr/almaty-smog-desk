@@ -1,0 +1,23 @@
+<!--title:Model data vs reality-->
+<div class="eyebrow">Our own question</div>
+<h1>How wrong is the free air-quality data?</h1>
+<p class="lede">Most weather and air apps show CAMS model estimates, not measurements. We compared CAMS with the US Embassy reference monitor for every day both had data.</p>
+<div class="row3" id="kpis"></div>
+<div class="sec tile"><h3>Average PM2.5 by month</h3><p class="muted" style="font-size:13px;margin:0 0 12px">The model estimate is close in summer but far too low in winter, exactly when it matters.</p>
+<div class="legend" id="lg"></div><div class="chartbox"><canvas id="c-month"></canvas></div></div>
+<div class="sec callout"><b>Why it matters.</b><span>CAMS works on a grid of about 11 km, so it averages Almaty's polluted lower districts with clean mountain air, and it can't see an inversion trapping smoke under 100 m of cold air. A school relying on a free app would get a "fine" signal on many real smog days. That's why our final model is trained and tested on <b>real station measurements</b>.</span></div>
+<a class="next" href="models.html"><span class="muted">Next</span><b>LSTM experiment →</b></a>
+<script>
+const C = DATA.station.cams_vs_station;
+$("kpis").innerHTML = [
+  [`${C.smog_days_station}`, `real smog days measured at the embassy (${C.n} days compared)`],
+  [`${C.smog_days_cams}`, `smog days in the CAMS model data for the same days. It misses ${fmt((1 - C.smog_days_cams / C.smog_days_station) * 100, 0)}%`],
+  [`${fmt(C.bias)}`, `µg/m³ average bias (CAMS reads lower). Typical daily error: ${fmt(C.mae)} µg/m³`]
+].map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+const M = C.monthly, mn = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+$("lg").innerHTML = legend([[css("--ink"), "Embassy measurement"], [css("--chart-actual"), "CAMS estimate"], [css("--red"), "35.4 µg/m³"]]);
+chart("c-month", () => ({ type: "bar", data: { labels: M.month.map(m => mn[m - 1]), datasets: [
+  { data: M.station, backgroundColor: css("--ink"), borderRadius: 4, barPercentage: .8, categoryPercentage: .7 },
+  { data: M.cams, backgroundColor: css("--chart-actual"), borderRadius: 4, barPercentage: .8, categoryPercentage: .7 },
+  { ...limitLine(12, 35.4), type: "line" }] }, options: baseOpts("µg/m³", ["Embassy", "CAMS", "Limit"]) }));
+</script>

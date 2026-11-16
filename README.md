@@ -1,7 +1,7 @@
 # Almaty Smog Desk: should recess be outside tomorrow?
 
 **Track:** Climate
-**Team:** _[names]_
+**Team:** Damir Kamalov (11th grade, Almaty, Kazakhstan)
 
 **Demo site:** _[GitHub Pages link]_ · **Video:** _[link]_
 
@@ -158,7 +158,7 @@ The LSTM has the best average but smooths out spikes, so it does worse on the da
 
 ```bash
 pip install -r requirements.txt
-export OPENAQ_API_KEY=...       # free key from openaq.org
+cp .env.example .env            # then paste your free OpenAQ key (openaq.org) into .env
 python train.py                 # CAMS data: baselines, Ridge, gradient boosting, LSTM -> results.json
 python predict.py               # live CAMS-based forecast -> forecast.json
 python openaq_fetch.py          # real station data -> data/openaq_*.csv

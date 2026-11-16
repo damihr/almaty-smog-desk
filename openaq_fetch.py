@@ -1,4 +1,12 @@
 """Download daily PM2.5 from OpenAQ v3 (needs env var OPENAQ_API_KEY). Run: python openaq_fetch.py"""
+import os as _os, pathlib as _pl
+# Load secrets from a local .env file (never committed, see .gitignore)
+_env = _pl.Path(__file__).parent / ".env"
+if _env.exists():
+    for _l in _env.read_text().splitlines():
+        if "=" in _l and not _l.strip().startswith("#"):
+            _k, _v = _l.split("=", 1); _os.environ.setdefault(_k.strip(), _v.strip())
+
 import os, time, pathlib, requests, pandas as pd
 KEY = os.environ["OPENAQ_API_KEY"]
 SENSORS = {"embassy": 25903,      # US Embassy Almaty, AirNow reference monitor, 2020-04 -> 2025-11

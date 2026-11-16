@@ -13,6 +13,14 @@ Pipeline:
 
 Run:  python train.py      -> writes data/, results.json, model.pkl
 """
+import os as _os, pathlib as _pl
+# Load secrets from a local .env file (never committed, see .gitignore)
+_env = _pl.Path(__file__).parent / ".env"
+if _env.exists():
+    for _l in _env.read_text().splitlines():
+        if "=" in _l and not _l.strip().startswith("#"):
+            _k, _v = _l.split("=", 1); _os.environ.setdefault(_k.strip(), _v.strip())
+
 import json, pickle, pathlib
 import numpy as np, pandas as pd, requests
 from sklearn.linear_model import Ridge

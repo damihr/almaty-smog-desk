@@ -136,36 +136,40 @@ def main():
         coef = final[-1].coef_
         R["coef"] = dict(sorted({f: round(float(c), 2) for f, c in zip(fs, coef)}.items(), key=lambda kv: -abs(kv[1]))[:8])
 
-    # ---- live forecast for School 182 ------------------------------------------------------
-    import os
-    live = get_json("https://api.openaq.org/v3/sensors/14840476/hours",
-                    headers={"X-API-Key": os.environ["OPENAQ_API_KEY"]}, key="results",
-                    params=dict(datetime_from=str((pd.Timestamp.now() - pd.Timedelta(days=9)).date()), limit=1000))["results"]
-    hr = pd.Series({pd.Timestamp(x["period"]["datetimeFrom"]["local"][:19]): x["value"] for x in live}).sort_index()
-    daily = hr.resample("D").mean()
-    wl = weather(None, None, url="https://api.open-meteo.com/v1/forecast", past_days=9, forecast_days=2)
-    today = pd.Timestamp.now(tz=TZ).normalize().tz_localize(None)
-    # Before noon, today's measurements are incomplete: use the latest full day as "today"
-    base = today if hr.index.max().hour >= 18 and hr.index.max().normalize() == today else today - pd.Timedelta(days=1)
-    Xl, _ = features(daily, wl)
-    row = Xl.loc[[base], fs]
-    pred = float(final.predict(row)[0])
-    verdict = "INDOORS" if pred > cut else ("OUTDOORS, LIGHT" if pred > 15 else "OUTDOORS")
-    fc = {"station": "School No.182 (AirGradient sensor)", "based_on": str(base.date()),
-          "for": str((base + pd.Timedelta(days=1)).date()), "pm25_today": round(float(daily.loc[base]), 1),
-          "pm25_tomorrow_forecast": round(pred, 1), "warning_cut": cut, "limit": LIMIT, "verdict": verdict,
-          "last_days": {str(k.date()): round(float(v), 1) for k, v in daily.dropna().tail(8).items()},
-          "tomorrow_weather": {"temp_min": round(float(wl.temp_min.get(base + pd.Timedelta(days=1), np.nan)), 1),
-                               "wind": round(float(wl.wind.get(base + pd.Timedelta(days=1), np.nan)), 1),
-                               "precip": round(float(wl.precip.get(base + pd.Timedelta(days=1), np.nan)), 1)},
-          "hourly_recent": {"time": [t.strftime("%m-%d %H:00") for t in hr.index[-72:]],
-                            "pm25": [round(float(v), 1) for v in hr.values[-72:]]}}
-    json.dump(fc, open(ROOT / "forecast_school.json", "w"), indent=1)
-    json.dump(R, open(ROOT / "station_results.json", "w"), indent=1, default=str)
+    json.dump(R, open(ROOT / "station_results.json", "w"), indent=1, default=str)   # save evaluation first
+    fc = None
+    try:
+        # ---- live forecast for School 182 ------------------------------------------------------
+        import os
+        live = get_json("https://api.openaq.org/v3/sensors/14840476/hours",
+                        headers={"X-API-Key": os.environ["OPENAQ_API_KEY"]}, key="results",
+                        params=dict(datetime_from=str((pd.Timestamp.now() - pd.Timedelta(days=9)).date()), limit=1000))["results"]
+        hr = pd.Series({pd.Timestamp(x["period"]["datetimeFrom"]["local"][:19]): x["value"] for x in live}).sort_index()
+        daily = hr.resample("D").mean()
+        wl = weather(None, None, url="https://api.open-meteo.com/v1/forecast", past_days=9, forecast_days=2)
+        today = pd.Timestamp.now(tz=TZ).normalize().tz_localize(None)
+        # Before noon, today's measurements are incomplete: use the latest full day as "today"
+        base = today if hr.index.max().hour >= 18 and hr.index.max().normalize() == today else today - pd.Timedelta(days=1)
+        Xl, _ = features(daily, wl)
+        row = Xl.loc[[base], fs]
+        pred = float(final.predict(row)[0])
+        verdict = "INDOORS" if pred > cut else ("OUTDOORS, LIGHT" if pred > 15 else "OUTDOORS")
+        fc = {"station": "School No.182 (AirGradient sensor)", "based_on": str(base.date()),
+              "for": str((base + pd.Timedelta(days=1)).date()), "pm25_today": round(float(daily.loc[base]), 1),
+              "pm25_tomorrow_forecast": round(pred, 1), "warning_cut": cut, "limit": LIMIT, "verdict": verdict,
+              "last_days": {str(k.date()): round(float(v), 1) for k, v in daily.dropna().tail(8).items()},
+              "tomorrow_weather": {"temp_min": round(float(wl.temp_min.get(base + pd.Timedelta(days=1), np.nan)), 1),
+                                   "wind": round(float(wl.wind.get(base + pd.Timedelta(days=1), np.nan)), 1),
+                                   "precip": round(float(wl.precip.get(base + pd.Timedelta(days=1), np.nan)), 1)},
+              "hourly_recent": {"time": [t.strftime("%m-%d %H:00") for t in hr.index[-72:]],
+                                "pm25": [round(float(v), 1) for v in hr.values[-72:]]}}
+        json.dump(fc, open(ROOT / "forecast_school.json", "w"), indent=1)
+    except Exception as e:   # live APIs can rate-limit CI runners; keep the previous school forecast
+        print(f"WARNING: live School 182 forecast skipped ({type(e).__name__}: {e}); keeping previous forecast_school.json", flush=True)
     print(json.dumps({k: R[k] for k in ["mae", "mae_heating", "warning_cut", "decision"]}, indent=1))
     print("SCHOOL", json.dumps({k: R["school"][k] for k in ["period", "n", "mae", "decision"]}, indent=1))
     print("CAMS", {k: v for k, v in R["cams_vs_station"].items() if k != "monthly"})
-    print("LIVE", {k: v for k, v in fc.items() if k != "hourly_recent"})
+    if fc: print("LIVE", {k: v for k, v in fc.items() if k != "hourly_recent"})
 
 
 if __name__ == "__main__":

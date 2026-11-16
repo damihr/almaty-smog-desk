@@ -25,25 +25,28 @@
 .maplibregl-popup-close-button{color:var(--muted);font-size:18px;padding:4px 8px}
 </style>
 <div class="eyebrow" id="eyebrow"></div>
-<h1>Where can kids play outside tomorrow?</h1>
+<h1>Where can kids play outside?</h1>
 <p class="lede" id="lede"></p>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-  <div class="seg"><button data-m="forecast" class="on">Tomorrow (forecast)</button><button data-m="today">Yesterday's average</button><button data-m="now">Right now</button></div>
+  <div class="seg"><button data-m="forecast" class="on" id="b-fc">Forecast</button><button data-m="today" id="b-base">Last full day</button><button data-m="now">Right now</button></div>
   <span class="muted" style="font-size:13px" id="updated"></span>
 </div>
 <div class="scale" id="scale"></div>
 <div id="map"></div>
 <div class="row3 sec" id="kpis" style="margin-top:16px"></div>
-<div class="sec"><div class="sec-title">Every sensor</div><p class="sec-sub">Sorted by tomorrow's forecast. The ensemble averages Ridge, gradient boosting and Chronos-Bolt, all run on each sensor's own latest data.</p><div class="tablewrap"><table id="t-sens"></table></div></div>
+<div class="sec"><div class="sec-title">Every sensor</div><p class="sec-sub">Sorted by forecast. The ensemble averages Ridge, gradient boosting and Chronos-Bolt, all run on each sensor's own latest data.</p><div class="tablewrap"><table id="t-sens"></table></div></div>
 <a class="next" href="models.html"><span class="muted">Next</span><b>Model showdown →</b></a>
 <script>
 const M = DATA.map, CATC = { "Good": "#7ec4a8", "Moderate": "#f2d16b", "Unhealthy for sensitive groups": "#f4a261", "Unhealthy": "#e76f51", "Very unhealthy": "#9d6bc7", "Hazardous": "#6d2a3a" };
 const ADV = { "Good": "Outdoor play is fine", "Moderate": "Fine for most; limit intense PE for kids with asthma", "Unhealthy for sensitive groups": "Move PE and recess indoors", "Unhealthy": "Everyone indoors", "Very unhealthy": "Everyone indoors, keep windows closed", "Hazardous": "Stay indoors" };
 const catOf = v => M.categories.find(([t]) => v <= t)[1];
 const S = M.sensors; let mode = "forecast";
+const shortDay = d => new Date(d + "T12:00").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+const baseDay = S.map(s => s.based_on).sort().pop();
+$("b-fc").textContent = "Forecast · " + shortDay(M.for); $("b-base").textContent = "Measured · " + shortDay(baseDay);
 const val = s => mode === "forecast" ? s.forecast : mode === "today" ? s.today : s.now;
 $("eyebrow").textContent = `Live · ${S.length} OpenAQ sensors · generated ${M.generated} Almaty time`;
-$("lede").innerHTML = `Each zone is the area closest to one air sensor (a Voronoi map), coloured by the US EPA health category. Click a zone to see what every model predicts there. Forecast for <b>${dayName(M.for)}</b>.`;
+$("lede").innerHTML = `Each zone is the area closest to one air sensor (a Voronoi map), coloured by the US EPA health category. Click a zone to see what every model predicts there. Forecast for <b>${dayName(M.for)}</b>, based on each sensor's last complete day (${shortDay(baseDay)}).`;
 $("updated").textContent = `Latest reading: ${S.map(s => s.last_reading).sort().pop().replace("T", " ").slice(0, 16)}`;
 $("scale").innerHTML = Object.entries(CATC).map(([n, c]) => `<span><i style="background:${c}"></i>${n}</span>`).join("");
 const lons = S.map(s => s.lon), lats = S.map(s => s.lat), pad = .03;
@@ -76,26 +79,26 @@ function buildMap() {
 function popup(s, ll) {
   const c = catOf(s.forecast), mx = Math.max(...s.last_days, s.forecast) || 1;
   new maplibregl.Popup({ maxWidth: "300px" }).setLngLat(ll).setHTML(`<div class="pp"><h4>${s.name}</h4><div class="muted">${s.provider} sensor</div>
-    <div style="display:flex;align-items:baseline;gap:8px;margin:10px 0 2px"><span class="v">${fmt(s.forecast)}</span><span class="muted">µg/m³ tomorrow</span></div>
+    <div style="display:flex;align-items:baseline;gap:8px;margin:10px 0 2px"><span class="v">${fmt(s.forecast)}</span><span class="muted">µg/m³ forecast</span></div>
     <div style="margin-bottom:10px"><span class="pill" style="background:${CATC[c]}33;color:var(--ink);margin:0">${c}</span></div>
     <div style="font-size:13px;margin-bottom:10px"><b>${ADV[c]}</b></div>
     ${Object.entries(s.models).map(([k, v]) => `<div class="r"><span class="muted">${k}</span><span>${fmt(v)}</span></div>`).join("")}
     <div class="r"><span class="muted">Chronos 80% range</span><span>${s.band[0]}–${s.band[1]}</span></div>
-    <div class="r" style="border:0"><span class="muted">Now / yesterday</span><span>${fmt(s.now)} / ${fmt(s.today)}</span></div>
+    <div class="r" style="border:0"><span class="muted">Now / last full day</span><span>${fmt(s.now)} / ${fmt(s.today)}</span></div>
     <div style="display:flex;gap:3px;align-items:flex-end;height:36px;margin-top:8px">${s.last_days.map(v => `<div style="flex:1;height:${v / mx * 100}%;background:${CATC[catOf(v)]};border-radius:2px"></div>`).join("")}<div style="flex:1;height:${s.forecast / mx * 100}%;background:repeating-linear-gradient(45deg,${CATC[c]},${CATC[c]} 3px,transparent 3px,transparent 5px);border-radius:2px"></div></div>
-    <div class="muted" style="font-size:11px;margin-top:4px">last 7 days → tomorrow</div></div>`).addTo(map);
+    <div class="muted" style="font-size:11px;margin-top:4px">last 7 days → forecast</div></div>`).addTo(map);
 }
 function update() {
   if (map && map.getSource("cells")) { map.getSource("cells").setData(geo()); map.getSource("pts").setData(pts()); }
   const counts = {}; S.forEach(s => { const c = catOf(val(s)); counts[c] = (counts[c] || 0) + 1; });
   const indoor = S.filter(s => val(s) > 35.4).length, avg = S.reduce((a, s) => a + val(s), 0) / S.length;
   const worst = S.reduce((a, s) => val(s) > val(a) ? s : a), best = S.reduce((a, s) => val(s) < val(a) ? s : a);
-  const lbl = { forecast: "tomorrow", today: "yesterday", now: "right now" }[mode];
+  const lbl = { forecast: "on " + shortDay(M.for), today: "on " + shortDay(baseDay), now: "right now" }[mode];
   $("kpis").innerHTML = [[`${indoor}/${S.length}`, `zones where PE should move indoors ${lbl}`], [fmt(avg), `µg/m³ city average ${lbl}`],
     [`${fmt(val(best), 0)} → ${fmt(val(worst), 0)}`, `cleanest: ${best.name} · dirtiest: ${worst.name}`]].map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
 }
 document.querySelectorAll(".seg button").forEach(b => b.onclick = () => { document.querySelectorAll(".seg button").forEach(x => x.classList.remove("on")); b.classList.add("on"); mode = b.dataset.m; update(); });
-$("t-sens").innerHTML = table([["Sensor"], ["Now", "num"], ["Yesterday", "num"], ["Ridge", "num"], ["Gr. boost", "num"], ["Chronos", "num"], ["Tomorrow", "num"], ["Category"]],
+$("t-sens").innerHTML = table([["Sensor"], ["Now", "num"], [shortDay(baseDay), "num"], ["Ridge", "num"], ["Gr. boost", "num"], ["Chronos", "num"], ["Forecast " + shortDay(M.for), "num"], ["Category"]],
   [...S].sort((a, b) => b.forecast - a.forecast).map(s => `<tr><td>${s.name}</td><td class="num">${fmt(s.now)}</td><td class="num">${fmt(s.today)}</td><td class="num">${fmt(s.models.Ridge)}</td><td class="num">${fmt(s.models["Gradient boosting"])}</td><td class="num">${fmt(s.models["Chronos-Bolt"])}</td><td class="num"><b>${fmt(s.forecast)}</b></td><td><span style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${CATC[s.forecast_cat]};margin-right:6px"></span>${s.forecast_cat}</td></tr>`));
 buildMap(); update();
 const _redraw = redraw; redraw = () => { _redraw(); buildMap(); };

@@ -89,7 +89,7 @@ def main():
                       "models": {k: round(v, 1) for k, v in s["p"].items()},
                       "band": [round(float(q[i, 0, 0]), 1), round(float(q[i, 0, 2]), 1)],
                       "last_days": [round(float(v), 1) for v in s["daily"].tail(7).values]})
-    R = {"generated": str(pd.Timestamp.now(tz=TZ))[:16], "for": str((today + pd.Timedelta(days=1)).date()),
+    R = {"generated": str(pd.Timestamp.now(tz=TZ))[:16], "for": str((max(pd.Timestamp(f["based_on"]) for f in feats) + pd.Timedelta(days=1)).date()),
          "sensors": feats, "categories": [[t, n] for t, n in CATS]}
     json.dump(R, open(ROOT / "map_results.json", "w"), indent=1, default=str)
     for f in sorted(feats, key=lambda f: -f["forecast"]):

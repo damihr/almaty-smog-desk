@@ -3829,9 +3829,9 @@
    "Persistence": 65.6,
    "Ridge": 51.6,
    "Gradient boosting": 32.6,
-   "LSTM": 21.2,
+   "LSTM": 21.0,
    "Chronos-Bolt (zero-shot)": 67.8,
-   "Ensemble (average)": 43.3
+   "Ensemble (average)": 43.2
   },
   "chronos_band": [
    46.2,

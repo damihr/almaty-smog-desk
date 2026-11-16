@@ -137,8 +137,9 @@ def main():
                       "mae_when_disagree": round(float(np.abs(yt - P["Ensemble (average)"].loc[common].values)[~agree].mean()), 2)}
 
     # ---------------- live: all models on the same fetched School No.182 data ----------------
-    live = requests.get("https://api.openaq.org/v3/sensors/14840476/hours", headers={"X-API-Key": os.environ["OPENAQ_API_KEY"]},
-                        params=dict(datetime_from=str((pd.Timestamp.now() - pd.Timedelta(days=30)).date()), limit=1000), timeout=60).json()["results"]
+    from http_util import get_json
+    live = get_json("https://api.openaq.org/v3/sensors/14840476/hours", headers={"X-API-Key": os.environ["OPENAQ_API_KEY"]}, key="results",
+                    params=dict(datetime_from=str((pd.Timestamp.now() - pd.Timedelta(days=30)).date()), limit=1000))["results"]
     hr = pd.Series({pd.Timestamp(x["period"]["datetimeFrom"]["local"][:19]): x["value"] for x in live}).sort_index()
     daily = hr.resample("D").mean()
     wl = weather(None, None, url="https://api.open-meteo.com/v1/forecast", past_days=30, forecast_days=2)

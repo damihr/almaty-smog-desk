@@ -16,6 +16,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error
 from train import LAT, LON, TZ, LIMIT, decision_stats
+from http_util import get_json
 
 ROOT = pathlib.Path(__file__).parent
 TEST_START, VAL_START = "2024-10-01", "2023-10-01"
@@ -25,10 +26,20 @@ SHORT = ["temp", "temp_min", "rh", "wind", "precip", "pressure", "cloud"]
 
 
 def weather(start, end, url="https://archive-api.open-meteo.com/v1/archive", **extra):
-    p = dict(latitude=LAT, longitude=LON, daily=",".join(WX), timezone=TZ, **extra)
-    if start: p.update(start_date=start, end_date=end)
-    d = requests.get(url, params=p, timeout=60).json()["daily"]
-    return pd.DataFrame({s: d[w] for s, w in zip(SHORT, WX)}, index=pd.to_datetime(d["time"]))
+    """Daily weather. Historical archive is cached in data/ (it never changes); the live forecast
+    is cached for 45 min so all scripts in one refresh share a single API call."""
+    import time as _t
+    live = start is None
+    cache = ROOT / ("data/weather_live.csv" if live else f"data/weather_archive_{start}_{end}.csv")
+    if cache.exists() and (not live or _t.time() - cache.stat().st_mtime < 45 * 60):
+        return pd.read_csv(cache, index_col=0, parse_dates=True)
+    p = dict(latitude=LAT, longitude=LON, daily=",".join(WX), timezone=TZ)
+    if live: p.update(past_days=30, forecast_days=2)        # one superset request for every caller
+    else: p.update(start_date=start, end_date=end, **extra)
+    d = get_json(url, p, key="daily")["daily"]
+    df = pd.DataFrame({s: d[w] for s, w in zip(SHORT, WX)}, index=pd.to_datetime(d["time"]))
+    df.to_csv(cache)
+    return df
 
 
 def load_station(name, min_hours=18):
@@ -127,10 +138,9 @@ def main():
 
     # ---- live forecast for School 182 ------------------------------------------------------
     import os
-    live = requests.get(f"https://api.openaq.org/v3/sensors/14840476/hours",
-                        headers={"X-API-Key": os.environ["OPENAQ_API_KEY"]},
-                        params=dict(datetime_from=str((pd.Timestamp.now() - pd.Timedelta(days=9)).date()), limit=1000),
-                        timeout=60).json()["results"]
+    live = get_json("https://api.openaq.org/v3/sensors/14840476/hours",
+                    headers={"X-API-Key": os.environ["OPENAQ_API_KEY"]}, key="results",
+                    params=dict(datetime_from=str((pd.Timestamp.now() - pd.Timedelta(days=9)).date()), limit=1000))["results"]
     hr = pd.Series({pd.Timestamp(x["period"]["datetimeFrom"]["local"][:19]): x["value"] for x in live}).sort_index()
     daily = hr.resample("D").mean()
     wl = weather(None, None, url="https://api.open-meteo.com/v1/forecast", past_days=9, forecast_days=2)

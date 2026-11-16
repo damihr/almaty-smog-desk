@@ -13,6 +13,7 @@ import numpy as np, pandas as pd, requests
 from train import TZ, LAT, LON
 from train_station import load_station, weather, features, models
 from compare_models import chronos_predict
+from http_util import get_json
 
 ROOT = pathlib.Path(__file__).parent
 H = {"X-API-Key": os.environ["OPENAQ_API_KEY"]}
@@ -23,8 +24,8 @@ cat = lambda v: next(n for t, n in CATS if v <= t)
 
 def main():
     now = pd.Timestamp.now(tz="UTC")
-    locs = requests.get("https://api.openaq.org/v3/locations", headers=H, params=dict(
-        coordinates=f"{LAT},{LON}", radius=25000, parameters_id=2, limit=100), timeout=60).json()["results"]
+    locs = get_json("https://api.openaq.org/v3/locations", headers=H, key="results", params=dict(
+        coordinates=f"{LAT},{LON}", radius=25000, parameters_id=2, limit=100))["results"]
     live = []
     for l in locs:
         last = (l.get("datetimeLast") or {}).get("utc")
@@ -36,10 +37,11 @@ def main():
 
     series = {}
     for st in live:
-        r = requests.get(f"https://api.openaq.org/v3/sensors/{st['sensor']}/hours", headers=H, params=dict(
-            datetime_from=str((now - pd.Timedelta(days=11)).date()), limit=1000), timeout=60)
-        if r.status_code == 429: time.sleep(5); r = requests.get(r.url, headers=H, timeout=60)
-        res = r.json().get("results", [])
+        try:
+            res = get_json(f"https://api.openaq.org/v3/sensors/{st['sensor']}/hours", headers=H, key="results", tries=3,
+                           params=dict(datetime_from=str((now - pd.Timedelta(days=11)).date()), limit=1000))["results"]
+        except RuntimeError as e:
+            print("  skip sensor", st["name"], e); continue
         hr = pd.Series({pd.Timestamp(x["period"]["datetimeFrom"]["local"][:19]): x["value"] for x in res
                         if x["value"] is not None and 0 <= x["value"] < 1000}).sort_index()
         if len(hr) > 48: series[st["id"]] = hr

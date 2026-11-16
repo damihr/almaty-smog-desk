@@ -154,6 +154,10 @@ The LSTM has the best average but smooths out spikes, so it does worse on the da
 1. Add **inversion strength** (the temperature difference between the city and a mountain station such as Shymbulak) and hourly wind, so the model can catch the breaks and the extreme spikes.
 2. Forecast **per district** using the dozens of school sensors in OpenAQ, and send each school its own verdict at 3 PM by Telegram.
 
+## Live updates
+
+A GitHub Action (`.github/workflows/refresh.yml`) runs **every 3 hours**. It fetches fresh sensor data, re-runs all models, rebuilds the site and commits the new snapshot. Visitors load only the static snapshot, so the site stays fast, needs no login and makes about 8 API calls a day however many people view it. Each page shows how old the snapshot is.
+
 ## How to run
 
 ```bash

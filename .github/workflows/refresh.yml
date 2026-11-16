@@ -1,0 +1,46 @@
+# Refreshes the live snapshot every 3 hours: fetches new sensor data, re-runs all models,
+# rebuilds docs/ and commits it. Visitors only load the static snapshot (no API calls).
+# Setup: repo Settings -> Secrets and variables -> Actions -> New secret OPENAQ_API_KEY
+name: Refresh live forecast
+on:
+  schedule:
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install (CPU-only PyTorch)
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install requests pandas numpy scikit-learn chronos-forecasting
+      - name: Cache Chronos model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: chronos-bolt-small
+      - name: Fetch data and forecast
+        env:
+          OPENAQ_API_KEY: ${{ secrets.OPENAQ_API_KEY }}
+        run: |
+          python train_station.py
+          python compare_models.py
+          python map_forecast.py
+          python build_site.py
+      - name: Commit snapshot
+        run: |
+          git config user.name "smog-desk-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs forecast_school.json station_results.json compare_results.json map_results.json data/openaq_*.csv
+          git diff --cached --quiet && echo "no changes" || (git commit -m "Live snapshot $(date -u +'%Y-%m-%d %H:%M UTC')" && git push)

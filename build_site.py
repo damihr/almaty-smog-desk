@@ -9,6 +9,8 @@ data = {"cams": json.load(open(ROOT / "results.json")), "cams_fc": json.load(ope
 if OUT.exists(): shutil.rmtree(OUT)
 (OUT / "assets").mkdir(parents=True)
 for f in (SITE / "assets").iterdir(): shutil.copy(f, OUT / "assets" / f.name)
+import datetime as _dt
+data["snapshot_utc"] = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 (OUT / "assets/data.js").write_text("window.DATA = " + json.dumps(data) + ";\n")
 HEAD = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">

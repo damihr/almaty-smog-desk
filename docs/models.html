@@ -1,40 +1,82 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LSTM experiment · Almaty Smog Desk</title>
+<title>Model showdown · Almaty Smog Desk</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="assets/data.js"></script><script src="assets/app.js"></script>
 </head><body><div class="wrap">
-<!--title:LSTM experiment-->
-<div class="eyebrow">Our own question</div>
-<h1>Does a deep sequence model help where it matters?</h1>
+<!--title:Model showdown-->
+<div class="eyebrow">Model showdown</div>
+<h1>Five models, one forecast. Which one should a school trust?</h1>
 <p class="lede" id="lede"></p>
-<div class="row2">
-  <div class="tile"><h3>LSTM wins on average</h3><p class="muted" id="w1" style="margin:0"></p></div>
-  <div class="tile"><h3>…but loses on smog days</h3><p class="muted" id="w2" style="margin:0"></p></div>
+
+<div class="hero">
+  <div class="tile dark" id="live-main"></div>
+  <div class="tile"><h3>Every model's forecast for <span id="live-for"></span></h3><p class="muted" style="font-size:13px;margin:0 0 8px">Same sensor data, same weather forecast. The red line is the warning cut-off.</p><div class="chartbox sm"><canvas id="c-live"></canvas></div></div>
 </div>
-<div class="sec tile"><h3>Error by how polluted the air really was</h3><p class="muted" style="font-size:13px;margin:0 0 12px">Mean absolute error, µg/m³. Lower is better.</p><div class="legend" id="lg"></div><div class="chartbox sm"><canvas id="c-lvl"></canvas></div></div>
-<div class="sec"><div class="sec-title">All models</div><p class="sec-sub">Same data, same date split, same test days.</p><div class="tablewrap"><table id="t-all"></table></div></div>
-<div class="sec tile"><h3>Test period: Ridge vs LSTM</h3><div class="legend" id="lg2"></div><div class="chartbox"><canvas id="c-ts"></canvas></div></div>
-<div class="sec callout"><b>Takeaway.</b><span>The LSTM smooths out spikes, which makes it great on ordinary days but worse on the days a school cares about. We chose the model by the decision it supports, not by the average score. Ridge is also easier for a teacher to trust because each input has a visible weight.</span></div>
-<a class="next" href="method.html"><span class="muted">Next</span><b>How it works →</b></a>
+
+<div class="sec"><div class="sec-title">Leaderboard</div><p class="sec-sub">Ranked by what matters to a school: error in the heating season, error on smog days, smog days caught and false alarms. All models were scored on the same held-out days at the US Embassy monitor.</p>
+<div class="tablewrap"><table id="t-board"></table></div></div>
+
+<div class="row2 sec">
+  <div class="tile"><h3>When models disagree, be careful</h3><p class="muted" id="agree" style="margin:0"></p></div>
+  <div class="tile"><h3>Chronos knows what it doesn't know</h3><p class="muted" id="chron" style="margin:0"></p></div>
+</div>
+
+<div class="sec tile"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px"><h3 style="margin:0">Test period: forecast vs measured</h3><div id="toggles" style="display:flex;gap:6px;flex-wrap:wrap"></div></div>
+<div class="legend" id="lg"></div><div class="chartbox"><canvas id="c-test"></canvas></div></div>
+
+<div class="sec"><div class="sec-title">The contenders</div><div class="row3" id="cards"></div></div>
+
+<div class="sec callout"><b>Earlier experiment.</b><span id="cams"></span></div>
+<a class="next" href="results.html"><span class="muted">Next</span><b>Real-station results →</b></a>
 <script>
-const R = DATA.cams, P = "Persistence (tomorrow = today)", L = "LSTM (14-day sequence), + tomorrow's weather forecast", B = R.best_model;
-const short = k => k.replace(", + tomorrow's weather forecast", " + tomorrow's weather").replace(" (14-day sequence)", " (14-day sequence)");
-$("lede").innerHTML = `Experiment on the CAMS dataset (4 years of hourly data, ${R.n_train} training days, ${R.n_test} test days from ${R.test_period[0]}). We compared a PyTorch LSTM that reads a 14-day sequence of PM2.5 and weather against linear and tree models.`;
-const lv = R.mae_by_level, lv_ = Object.keys(lv[B]);
-$("w1").textContent = `Lowest error across all test days: ${fmt(R.mae[L], 2)} vs ${fmt(R.mae[B], 2)} for Ridge and ${fmt(R.mae[P], 2)} for the baseline.`;
-$("w2").textContent = `On days that were really above 35.4 µg/m³, the LSTM's error is ${fmt(lv[L][lv_[2]], 2)}, worse than Ridge's ${fmt(lv[B][lv_[2]], 2)}. It also catches fewer smog days (${Object.entries(R.decision).find(([k]) => k.startsWith("LSTM"))[1].caught} vs ${Object.entries(R.decision).find(([k]) => k.includes("tuned"))[1].caught}).`;
-$("lg").innerHTML = legend([[css("--chart-actual"), "Persistence"], [css("--ink"), "Ridge"], [css("--blue"), "LSTM"]]);
-chart("c-lvl", () => ({ type: "bar", data: { labels: lv_, datasets: [P, B, L].map((k, i) => ({ data: lv_.map(l => lv[k][l]), backgroundColor: [css("--chart-actual"), css("--ink"), css("--blue")][i], borderRadius: 4 })) },
-  options: baseOpts("µg/m³", ["Persistence", "Ridge", "LSTM"]) }));
-$("t-all").innerHTML = table([["Model"], ["All days", "num"], ["Heating season", "num"], ["Smog days", "num"]],
-  Object.keys(R.mae).map(k => `<tr class="${k === B || k === L ? "hl" : ""} ${k === P || k.startsWith("7-day") ? "base" : ""}"><td>${short(k)}</td><td class="num">${fmt(R.mae[k], 2)}</td><td class="num">${fmt(R.mae_heating[k], 2)}</td><td class="num">${fmt(lv[k][lv_[2]], 2)}</td></tr>`));
-const S = R.series;
-$("lg2").innerHTML = legend([[css("--chart-actual"), "Actual (CAMS)"], [css("--ink"), "Ridge"], [css("--blue"), "LSTM"]]);
-chart("c-ts", () => ({ type: "line", data: { labels: S.date, datasets: [line(S.actual, css("--chart-actual"), 2), line(S.model, css("--ink"), 1.3), line(S.lstm, css("--blue"), 1.2, [4, 3]), limitLine(S.date.length, 35.4)] },
-  options: baseOpts("µg/m³", ["Actual", "Ridge", "LSTM", "Limit"]) }));
+const C = DATA.compare, L = C.live, B = C.board, E = "Ensemble (average)", CH = "Chronos-Bolt (zero-shot)";
+const COL = { "Persistence": "--chart-actual", "Ridge": "--ink", "Gradient boosting": "--yellow", "LSTM": "--blue", [CH]: "--green", [E]: "--red" };
+$("lede").innerHTML = `A linear model, gradient-boosted trees, an LSTM neural network and <b>Chronos-Bolt</b>, Amazon's pretrained time-series foundation model, used zero-shot. Plus an ensemble that averages them. All were tested on ${C.n_test} real days (${C.test_period[0]} → ${C.test_period[1]}).`;
+const ens = L.pred[E], indoors = ens > L.cut, agreeAll = L.votes_indoors === 0 || L.votes_indoors === L.n_models;
+$("live-for").textContent = dayName(L.for);
+$("live-main").innerHTML = `<span class="pill ${indoors ? "INDOORS" : (ens > 15 ? "LIGHT" : "OUTDOORS")}">${indoors ? "INDOORS" : (ens > 15 ? "OUTDOORS, LIGHT" : "OUTDOORS")}</span>
+  <div class="big">${fmt(ens)}<span class="unit muted">µg/m³</span></div>
+  <p class="muted" style="margin:10px 0 18px">Ensemble forecast for <b style="color:var(--bg)">${dayName(L.for)}</b> at School No.182</p>
+  <div class="kv" style="border-color:rgba(127,127,127,.25)"><span class="muted">Models voting INDOORS</span><span>${L.votes_indoors} of ${L.n_models}</span></div>
+  <div class="kv" style="border-color:rgba(127,127,127,.25)"><span class="muted">Chronos 80% range</span><span>${L.chronos_band[0]} – ${L.chronos_band[1]}</span></div>
+  <div class="kv" style="border:0"><span class="muted">Confidence</span><span>${agreeAll ? "High: all models agree" : "Low: models disagree, so err on the side of caution"}</span></div>`;
+const names = Object.keys(L.pred);
+chart("c-live", () => ({ type: "bar", data: { labels: names.map(n => n.replace(" (zero-shot)", "").replace(" (average)", "")), datasets: [
+  { data: names.map(n => L.pred[n]), backgroundColor: names.map(n => css(COL[n])), borderRadius: 4, barPercentage: .7 },
+  { ...limitLine(names.length, L.cut), type: "line" }] },
+  options: { ...baseOpts("µg/m³", ["Forecast", "Cut-off"]), indexAxis: "x" } }));
+const best = C.most_trusted;
+$("t-board").innerHTML = table([["#"], ["Model"], ["Error, all", "num"], ["Heating season", "num"], ["Smog days", "num"], ["Caught", "num"], ["False alarms", "num"]],
+  B.map((r, i) => `<tr class="${r.model === best ? "hl" : ""} ${r.model === "Persistence" ? "base" : ""}"><td class="mono">${i + 1}</td><td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${css(COL[r.model])};margin-right:8px"></span>${r.model}${r.model === best ? ' <span class="delta">most trusted</span>' : ""}${r.model === "Persistence" ? " · baseline" : ""}</td><td class="num">${fmt(r.mae, 2)}</td><td class="num">${fmt(r.mae_heating, 2)}</td><td class="num">${fmt(r.mae_smog, 2)}</td><td class="num">${r.caught}/${r.bad_days}</td><td class="num">${r.false_alarms}</td></tr>`));
+const A = C.agreement;
+$("agree").innerHTML = `All four models agreed on the INDOORS/OUTDOORS call on <b style="color:var(--ink)">${fmt(A.all_agree_share * 100, 0)}%</b> of test days, and on those days the ensemble's error was <b style="color:var(--ink)">${fmt(A.mae_when_agree, 2)}</b>. When they disagreed it rose to <b style="color:var(--ink)">${fmt(A.mae_when_disagree, 2)}</b>. So disagreement is a free warning sign, and the tool shows it.`;
+const chr = B.find(r => r.model === CH), per = B.find(r => r.model === "Persistence");
+$("chron").innerHTML = `Without any training on Almaty data, Chronos's single-number forecast is close to the baseline (${fmt(chr.mae, 2)} vs ${fmt(per.mae, 2)}). But its 80% uncertainty range contained the real value <b style="color:var(--ink)">${fmt(C.chronos_80_coverage * 100, 1)}%</b> of the time. Its sense of uncertainty is well calibrated, which is why we show its range on the forecast.`;
+const S = C.series; let shown = new Set([E, "Persistence"]);
+function tg() { $("toggles").innerHTML = names.map(n => `<button class="theme" data-n="${n}" style="${shown.has(n) ? `border-color:${css(COL[n])};color:var(--ink)` : ""}">${n.replace(" (zero-shot)", "").replace(" (average)", "")}</button>`).join("");
+  document.querySelectorAll("#toggles button").forEach(b => b.onclick = () => { const n = b.dataset.n; shown.has(n) ? shown.delete(n) : shown.add(n); tg(); redraw(); });
+  $("lg").innerHTML = legend([[css("--chart-actual"), "Measured (thick grey)"], ...[...shown].map(n => [css(COL[n]), n])]); }
+tg();
+chart("c-test", () => {
+  const ds = [{ ...line(S.actual, css("--chart-actual"), 3), label: "Measured" }];
+  if (shown.has(CH)) ds.push({ ...line(S.chronos_p90, "transparent", 0), label: "Chronos p90" }, { ...line(S.chronos_p10, "transparent", 0), fill: "-1", backgroundColor: "rgba(15,123,108,.12)", label: "Chronos p10" });
+  [...shown].forEach(n => ds.push({ ...line(S[n], css(COL[n]), 1.4), label: n }));
+  ds.push({ ...limitLine(S.date.length, 35.4), label: "35.4 limit" });
+  const o = baseOpts("µg/m³"); o.plugins.tooltip.callbacks.label = i => i.dataset.label + ": " + fmt(i.raw); return { type: "line", data: { labels: S.date, datasets: ds }, options: o };
+});
+$("cards").innerHTML = [
+  ["Ridge", "Linear regression on today's PM2.5, weather and tomorrow's forecast. Simple and transparent: every input has a visible weight."],
+  ["Gradient boosting", "Hundreds of small decision trees, each fixing the last one's errors. The same family as XGBoost and LightGBM."],
+  ["LSTM", "A recurrent neural network (PyTorch) that reads the last 14 days as a sequence, plus tomorrow's weather. Ensemble of 3 seeds."],
+  [CH, "Amazon's 2024 foundation model, pretrained on about 100 billion time-series points. We never trained it on our data: it only sees the PM2.5 history (zero-shot)."],
+  [E, "The plain average of the 4 models above, fixed in advance and not tuned on the test data. Different models make different mistakes, so averaging cancels some out."],
+  ["Persistence", "Baseline: tomorrow will be the same as today. Any model has to beat this to be worth using."]
+].map(([n, d]) => `<div class="tile"><h3><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${css(COL[n])};margin-right:8px"></span>${n}</h3><p class="muted" style="margin:0;font-size:14px">${d}</p></div>`).join("");
+const R = DATA.cams, lv = R.mae_by_level, LL = "LSTM (14-day sequence), + tomorrow's weather forecast", k3 = Object.keys(lv[R.best_model])[2];
+$("cams").textContent = `On 4 years of CAMS model data, an LSTM had the best average error (${fmt(R.mae[LL], 2)} vs ${fmt(R.mae[R.best_model], 2)} for Ridge) but did worse on smog days (${fmt(lv[LL][k3], 2)} vs ${fmt(lv[R.best_model][k3], 2)}). On real station data, the LSTM caught the most smog days with the fewest false alarms. The data you train on changes which model wins.`;
 </script>
 <footer>Almaty Smog Desk · Veritas AI International High School Hackathon 2026 · AI + Climate.<br>This project is a prototype and is not medical advice.</footer></div></body></html>

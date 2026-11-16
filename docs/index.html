@@ -26,7 +26,9 @@
 
 <a class="next" href="results.html"><span class="muted">Next</span><b>Real-station results →</b></a>
 <script>
-const S = DATA.station, F = DATA.school_fc;
+const S = DATA.station, F = DATA.school_fc, CL = DATA.compare.live;
+F.pm25_tomorrow_forecast = CL.pred["Ensemble (average)"]; F.for = CL.for; F.based_on = CL.based_on;
+F.verdict = F.pm25_tomorrow_forecast > F.warning_cut ? "INDOORS" : (F.pm25_tomorrow_forecast > 15 ? "OUTDOORS, LIGHT" : "OUTDOORS");
 const verdictInfo = {
   "INDOORS": ["INDOORS", "Move PE and recess indoors. Keep windows closed during the evening heating peak."],
   "OUTDOORS, LIGHT": ["LIGHT", "Outdoor recess is fine. Keep long or intense PE indoors for children with asthma."],
@@ -36,7 +38,7 @@ $("fc-main").innerHTML = `<span class="pill ${verdictInfo[0]}">${F.verdict}</spa
   <div class="big">${fmt(F.pm25_tomorrow_forecast)}<span class="unit muted">µg/m³</span></div>
   <p class="muted" style="margin:10px 0 18px">Forecast daily PM2.5 for <b style="color:var(--bg)">${dayName(F.for)}</b> at School No.182</p>
   <p style="margin:0;font-size:16px">${verdictInfo[1]}</p>`;
-$("fc-side").innerHTML = `<h3>Inputs the model used</h3><p class="muted" style="font-size:13px">Ridge regression, trained on 804 days of embassy measurements</p>
+$("fc-side").innerHTML = `<h3>Inputs the model used</h3><p class="muted" style="font-size:13px">Ensemble of 4 models (Ridge, gradient boosting, LSTM, Chronos-Bolt). ${CL.votes_indoors} of ${CL.n_models} vote INDOORS${CL.votes_indoors > 0 && CL.votes_indoors < CL.n_models ? ": the models disagree, so lower confidence" : ""}. <a href="models.html">See all models →</a></p>
   <div class="kv"><span>PM2.5 on ${F.based_on}</span><span>${fmt(F.pm25_today)} µg/m³</span></div>
   <div class="kv"><span>Warning above</span><span>${fmt(F.warning_cut)} µg/m³</span></div>
   <div class="kv"><span>Forecast min temperature</span><span>${fmt(F.tomorrow_weather.temp_min)} °C</span></div>

@@ -1,0 +1,1824 @@
+{
+ "generated": "2026-11-16 09:01",
+ "for": "2026-11-17",
+ "sensors": [
+  {
+   "id": 6158096,
+   "name": "\u2116182 mektep-gimnaziya",
+   "provider": "AirGradient",
+   "lat": 43.281,
+   "lon": 76.824,
+   "now": 20.2,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 65.6,
+   "based_on": "2026-11-15",
+   "forecast": 48.4,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 51.6,
+    "Gradient boosting": 32.6,
+    "Chronos-Bolt": 61.0
+   },
+   "band": [
+    27.5,
+    92.9
+   ],
+   "last_days": [
+    45.1,
+    27.5,
+    34.7,
+    54.9,
+    79.3,
+    65.6,
+    22.9
+   ]
+  },
+  {
+   "id": 6161924,
+   "name": "Almaty Arena",
+   "provider": "AirGradient",
+   "lat": 43.2639,
+   "lon": 76.8193,
+   "now": 10.0,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 63.6,
+   "based_on": "2026-11-15",
+   "forecast": 45.0,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 49.2,
+    "Gradient boosting": 28.1,
+    "Chronos-Bolt": 57.8
+   },
+   "band": [
+    11.9,
+    100.8
+   ],
+   "last_days": [
+    27.2,
+    8.5,
+    20.5,
+    32.3,
+    90.1,
+    63.6,
+    19.2
+   ]
+  },
+  {
+   "id": 6174362,
+   "name": "Abai \u2013 Seifullin",
+   "provider": "AirGradient",
+   "lat": 43.241181,
+   "lon": 76.933831,
+   "now": 10.5,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 56.8,
+   "based_on": "2026-11-15",
+   "forecast": 40.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 41.3,
+    "Gradient boosting": 26.7,
+    "Chronos-Bolt": 52.7
+   },
+   "band": [
+    32.5,
+    68.3
+   ],
+   "last_days": [
+    21.2,
+    3.1,
+    22.8,
+    38.3,
+    42.5,
+    56.8,
+    27.7
+   ]
+  },
+  {
+   "id": 6174363,
+   "name": "GATOB",
+   "provider": "AirGradient",
+   "lat": 43.2497,
+   "lon": 76.9458,
+   "now": 7.7,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 59.9,
+   "based_on": "2026-11-15",
+   "forecast": 41.4,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.4,
+    "Gradient boosting": 25.8,
+    "Chronos-Bolt": 56.2
+   },
+   "band": [
+    35.8,
+    72.9
+   ],
+   "last_days": [
+    20.2,
+    1.9,
+    20.2,
+    35.3,
+    41.9,
+    59.9,
+    25.8
+   ]
+  },
+  {
+   "id": 6174364,
+   "name": "Alma City",
+   "provider": "AirGradient",
+   "lat": 43.2213,
+   "lon": 76.7846,
+   "now": 40.5,
+   "now_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 65.9,
+   "based_on": "2026-11-15",
+   "forecast": 45.9,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 50.2,
+    "Gradient boosting": 28.1,
+    "Chronos-Bolt": 59.4
+   },
+   "band": [
+    21.9,
+    95.5
+   ],
+   "last_days": [
+    26.2,
+    16.9,
+    24.7,
+    36.0,
+    91.2,
+    65.9,
+    47.7
+   ]
+  },
+  {
+   "id": 6175360,
+   "name": "Panfilovo, \u211633 mektep",
+   "provider": "AirGradient",
+   "lat": 43.3838,
+   "lon": 77.1163,
+   "now": 10.0,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 80.7,
+   "based_on": "2026-11-15",
+   "forecast": 52.0,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 55.6,
+    "Gradient boosting": 22.9,
+    "Chronos-Bolt": 77.5
+   },
+   "band": [
+    44.0,
+    103.5
+   ],
+   "last_days": [
+    41.4,
+    12.8,
+    14.3,
+    29.7,
+    72.7,
+    80.7,
+    25.3
+   ]
+  },
+  {
+   "id": 6175361,
+   "name": "Altai 2",
+   "provider": "AirGradient",
+   "lat": 43.3503,
+   "lon": 76.9888,
+   "now": 7.2,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 55.2,
+   "based_on": "2026-11-15",
+   "forecast": 39.5,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.3,
+    "Gradient boosting": 24.5,
+    "Chronos-Bolt": 51.7
+   },
+   "band": [
+    10.0,
+    91.8
+   ],
+   "last_days": [
+    24.6,
+    5.9,
+    9.4,
+    16.9,
+    65.6,
+    55.2,
+    18.5
+   ]
+  },
+  {
+   "id": 6175362,
+   "name": "AKPTiT kolledj",
+   "provider": "AirGradient",
+   "lat": 43.3958,
+   "lon": 76.9865,
+   "now": 5.4,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 61.2,
+   "based_on": "2026-11-15",
+   "forecast": 42.0,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 46.7,
+    "Gradient boosting": 22.2,
+    "Chronos-Bolt": 57.0
+   },
+   "band": [
+    6.2,
+    104.5
+   ],
+   "last_days": [
+    29.2,
+    10.8,
+    6.5,
+    16.8,
+    70.0,
+    61.2,
+    14.2
+   ]
+  },
+  {
+   "id": 6175363,
+   "name": "\u2116170 mektep",
+   "provider": "AirGradient",
+   "lat": 43.3364,
+   "lon": 76.9775,
+   "now": 9.0,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 66.7,
+   "based_on": "2026-11-15",
+   "forecast": 47.0,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 49.8,
+    "Gradient boosting": 28.5,
+    "Chronos-Bolt": 62.8
+   },
+   "band": [
+    15.7,
+    109.3
+   ],
+   "last_days": [
+    30.5,
+    9.5,
+    15.8,
+    24.2,
+    82.2,
+    66.7,
+    23.3
+   ]
+  },
+  {
+   "id": 6175364,
+   "name": "\u211616 \u00e4skeri qala\u015f\u0131q (S\u00fcyinbai d.)",
+   "provider": "AirGradient",
+   "lat": 43.3695,
+   "lon": 76.9869,
+   "now": 4.2,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 60.7,
+   "based_on": "2026-11-15",
+   "forecast": 42.1,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 45.7,
+    "Gradient boosting": 23.2,
+    "Chronos-Bolt": 57.5
+   },
+   "band": [
+    10.4,
+    102.1
+   ],
+   "last_days": [
+    29.4,
+    8.5,
+    9.0,
+    15.5,
+    68.1,
+    60.7,
+    16.2
+   ]
+  },
+  {
+   "id": 6175365,
+   "name": "\u211611 orta mektep",
+   "provider": "AirGradient",
+   "lat": 43.3454,
+   "lon": 76.9588,
+   "now": 13.0,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 73.4,
+   "based_on": "2026-11-15",
+   "forecast": 54.5,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 55.4,
+    "Gradient boosting": 39.9,
+    "Chronos-Bolt": 68.2
+   },
+   "band": [
+    4.8,
+    134.1
+   ],
+   "last_days": [
+    36.0,
+    12.3,
+    15.1,
+    24.0,
+    106.0,
+    73.4,
+    24.8
+   ]
+  },
+  {
+   "id": 6175366,
+   "name": "\u211631 orta mektep",
+   "provider": "AirGradient",
+   "lat": 43.3253,
+   "lon": 76.9676,
+   "now": 8.8,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 63.0,
+   "based_on": "2026-11-15",
+   "forecast": 45.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 47.6,
+    "Gradient boosting": 29.2,
+    "Chronos-Bolt": 59.2
+   },
+   "band": [
+    12.9,
+    107.0
+   ],
+   "last_days": [
+    27.7,
+    7.7,
+    13.9,
+    23.2,
+    83.3,
+    63.0,
+    22.2
+   ]
+  },
+  {
+   "id": 6175367,
+   "name": "\u211644 mektep-gimnaziya",
+   "provider": "AirGradient",
+   "lat": 43.3439,
+   "lon": 77.0072,
+   "now": 12.3,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 65.1,
+   "based_on": "2026-11-15",
+   "forecast": 44.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 48.2,
+    "Gradient boosting": 22.0,
+    "Chronos-Bolt": 62.3
+   },
+   "band": [
+    23.6,
+    97.8
+   ],
+   "last_days": [
+    32.2,
+    9.5,
+    15.7,
+    28.4,
+    72.6,
+    65.1,
+    26.3
+   ]
+  },
+  {
+   "id": 6175368,
+   "name": "\u2116168 Balabaq\u015fa",
+   "provider": "AirGradient",
+   "lat": 43.3105,
+   "lon": 76.8742,
+   "now": 6.3,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 62.9,
+   "based_on": "2026-11-15",
+   "forecast": 45.1,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 48.1,
+    "Gradient boosting": 29.1,
+    "Chronos-Bolt": 58.2
+   },
+   "band": [
+    6.3,
+    108.9
+   ],
+   "last_days": [
+    29.1,
+    6.1,
+    13.1,
+    20.0,
+    84.3,
+    62.9,
+    18.3
+   ]
+  },
+  {
+   "id": 6175369,
+   "name": "\u2116179 mektep",
+   "provider": "AirGradient",
+   "lat": 43.3382,
+   "lon": 76.8995,
+   "now": 4.2,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 63.5,
+   "based_on": "2026-11-15",
+   "forecast": 44.8,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 46.4,
+    "Gradient boosting": 24.6,
+    "Chronos-Bolt": 63.4
+   },
+   "band": [
+    16.0,
+    107.4
+   ],
+   "last_days": [
+    27.2,
+    6.3,
+    7.6,
+    13.6,
+    60.0,
+    63.5,
+    13.9
+   ]
+  },
+  {
+   "id": 6175371,
+   "name": "\u2116128 Balabaq\u015fasy (\u015eekspir k-si)",
+   "provider": "AirGradient",
+   "lat": 43.3575,
+   "lon": 76.9354,
+   "now": 2.3,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 59.9,
+   "based_on": "2026-11-15",
+   "forecast": 40.4,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 45.5,
+    "Gradient boosting": 22.3,
+    "Chronos-Bolt": 53.3
+   },
+   "band": [
+    4.4,
+    97.9
+   ],
+   "last_days": [
+    29.1,
+    8.3,
+    4.8,
+    11.1,
+    73.2,
+    59.9,
+    12.0
+   ]
+  },
+  {
+   "id": 6175385,
+   "name": "Ainabulaq (Jumabayev k-si)",
+   "provider": "AirGradient",
+   "lat": 43.3238,
+   "lon": 76.9111,
+   "now": 3.8,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 60.5,
+   "based_on": "2026-11-15",
+   "forecast": 41.7,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 45.9,
+    "Gradient boosting": 21.9,
+    "Chronos-Bolt": 57.2
+   },
+   "band": [
+    13.5,
+    98.4
+   ],
+   "last_days": [
+    30.2,
+    7.0,
+    11.8,
+    19.1,
+    72.6,
+    60.5,
+    14.6
+   ]
+  },
+  {
+   "id": 6175386,
+   "name": "Jas Qanat",
+   "provider": "AirGradient",
+   "lat": 43.3251,
+   "lon": 76.9866,
+   "now": 7.9,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 62.3,
+   "based_on": "2026-11-15",
+   "forecast": 42.7,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 46.4,
+    "Gradient boosting": 22.0,
+    "Chronos-Bolt": 59.5
+   },
+   "band": [
+    18.7,
+    97.9
+   ],
+   "last_days": [
+    27.2,
+    6.2,
+    14.9,
+    24.6,
+    74.2,
+    62.3,
+    23.9
+   ]
+  },
+  {
+   "id": 6175387,
+   "name": "Jambyl \u2013 Nurmaqov",
+   "provider": "AirGradient",
+   "lat": 43.2452,
+   "lon": 76.9075,
+   "now": 4.5,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 50.0,
+   "based_on": "2026-11-15",
+   "forecast": 38.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 37.1,
+    "Gradient boosting": 29.5,
+    "Chronos-Bolt": 48.4
+   },
+   "band": [
+    32.3,
+    59.8
+   ],
+   "last_days": [
+    16.2,
+    2.6,
+    16.3,
+    29.8,
+    38.5,
+    50.0,
+    20.8
+   ]
+  },
+  {
+   "id": 6175388,
+   "name": "Qazybek bi \u2013 Nurmaqov",
+   "provider": "AirGradient",
+   "lat": 43.2537,
+   "lon": 76.9064,
+   "now": 7.6,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 54.4,
+   "based_on": "2026-11-15",
+   "forecast": 41.0,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 40.2,
+    "Gradient boosting": 29.6,
+    "Chronos-Bolt": 53.4
+   },
+   "band": [
+    33.5,
+    67.7
+   ],
+   "last_days": [
+    20.8,
+    3.0,
+    19.9,
+    31.8,
+    46.2,
+    54.4,
+    23.7
+   ]
+  },
+  {
+   "id": 6175389,
+   "name": "Sairan (\u00d6tegen batyr k-si)",
+   "provider": "AirGradient",
+   "lat": 43.2414,
+   "lon": 76.8608,
+   "now": 4.1,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 59.4,
+   "based_on": "2026-11-15",
+   "forecast": 43.0,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 43.3,
+    "Gradient boosting": 26.8,
+    "Chronos-Bolt": 58.9
+   },
+   "band": [
+    32.1,
+    80.5
+   ],
+   "last_days": [
+    19.7,
+    2.4,
+    16.9,
+    31.1,
+    54.8,
+    59.4,
+    19.4
+   ]
+  },
+  {
+   "id": 6175390,
+   "name": "Qalalyq kardiologiya ortaly\u011f\u0131",
+   "provider": "AirGradient",
+   "lat": 43.2536,
+   "lon": 76.9283,
+   "now": 8.1,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 57.1,
+   "based_on": "2026-11-15",
+   "forecast": 41.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 41.4,
+    "Gradient boosting": 26.5,
+    "Chronos-Bolt": 56.0
+   },
+   "band": [
+    35.6,
+    72.0
+   ],
+   "last_days": [
+    20.1,
+    2.9,
+    19.9,
+    34.1,
+    44.9,
+    57.1,
+    25.0
+   ]
+  },
+  {
+   "id": 6175391,
+   "name": "Almaty 2 t/zh vokzaly",
+   "provider": "AirGradient",
+   "lat": 43.2734,
+   "lon": 76.939,
+   "now": 23.2,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 90.2,
+   "based_on": "2026-11-15",
+   "forecast": 60.5,
+   "forecast_cat": "Unhealthy",
+   "models": {
+    "Ridge": 62.4,
+    "Gradient boosting": 32.5,
+    "Chronos-Bolt": 86.5
+   },
+   "band": [
+    47.2,
+    127.9
+   ],
+   "last_days": [
+    29.3,
+    13.7,
+    39.5,
+    46.6,
+    96.0,
+    90.2,
+    36.6
+   ]
+  },
+  {
+   "id": 6175392,
+   "name": "\u2116153 mektep-gimnaziya",
+   "provider": "AirGradient",
+   "lat": 43.2209,
+   "lon": 76.8362,
+   "now": 8.4,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 62.6,
+   "based_on": "2026-11-15",
+   "forecast": 43.9,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 45.6,
+    "Gradient boosting": 24.2,
+    "Chronos-Bolt": 61.9
+   },
+   "band": [
+    40.1,
+    76.2
+   ],
+   "last_days": [
+    25.5,
+    7.2,
+    20.2,
+    38.1,
+    56.0,
+    62.6,
+    22.0
+   ]
+  },
+  {
+   "id": 6175393,
+   "name": "B\u00f6keikhanov \u2013 Aerodromnyi t. k-si",
+   "provider": "AirGradient",
+   "lat": 43.274,
+   "lon": 76.9108,
+   "now": 7.4,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 65.6,
+   "based_on": "2026-11-15",
+   "forecast": 45.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 47.2,
+    "Gradient boosting": 23.7,
+    "Chronos-Bolt": 64.9
+   },
+   "band": [
+    31.5,
+    96.0
+   ],
+   "last_days": [
+    22.2,
+    5.0,
+    18.2,
+    27.6,
+    67.4,
+    65.6,
+    22.9
+   ]
+  },
+  {
+   "id": 6175394,
+   "name": "\u2116157 mektep",
+   "provider": "AirGradient",
+   "lat": 43.2197,
+   "lon": 76.8015,
+   "now": 5.6,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 49.6,
+   "based_on": "2026-11-15",
+   "forecast": 37.5,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 39.4,
+    "Gradient boosting": 27.1,
+    "Chronos-Bolt": 46.0
+   },
+   "band": [
+    18.3,
+    66.1
+   ],
+   "last_days": [
+    20.3,
+    3.5,
+    23.4,
+    33.7,
+    60.3,
+    49.6,
+    16.2
+   ]
+  },
+  {
+   "id": 6175395,
+   "name": "\u2116166 litsei",
+   "provider": "AirGradient",
+   "lat": 43.2604,
+   "lon": 76.8725,
+   "now": 4.9,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 59.9,
+   "based_on": "2026-11-15",
+   "forecast": 41.6,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 44.9,
+    "Gradient boosting": 22.7,
+    "Chronos-Bolt": 57.1
+   },
+   "band": [
+    20.3,
+    90.5
+   ],
+   "last_days": [
+    24.1,
+    2.8,
+    15.5,
+    27.0,
+    71.1,
+    59.9,
+    18.1
+   ]
+  },
+  {
+   "id": 6175396,
+   "name": "\u2116151 mektep",
+   "provider": "AirGradient",
+   "lat": 43.2811,
+   "lon": 76.8806,
+   "now": 6.1,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 58.5,
+   "based_on": "2026-11-15",
+   "forecast": 40.6,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 44.6,
+    "Gradient boosting": 23.8,
+    "Chronos-Bolt": 53.5
+   },
+   "band": [
+    13.5,
+    90.9
+   ],
+   "last_days": [
+    21.5,
+    3.0,
+    16.0,
+    24.7,
+    76.3,
+    58.5,
+    17.5
+   ]
+  },
+  {
+   "id": 6175397,
+   "name": "Sairan (Qarasai Batyr k-si)",
+   "provider": "AirGradient",
+   "lat": 43.2466,
+   "lon": 76.8681,
+   "now": 4.6,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 55.8,
+   "based_on": "2026-11-15",
+   "forecast": 41.6,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 40.9,
+    "Gradient boosting": 27.6,
+    "Chronos-Bolt": 56.2
+   },
+   "band": [
+    29.4,
+    80.2
+   ],
+   "last_days": [
+    19.3,
+    2.7,
+    12.5,
+    24.9,
+    50.8,
+    55.8,
+    17.0
+   ]
+  },
+  {
+   "id": 6175398,
+   "name": "\u2116174 mektep-gimnaziya",
+   "provider": "AirGradient",
+   "lat": 43.21574,
+   "lon": 76.791652,
+   "now": 6.4,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 52.2,
+   "based_on": "2026-11-15",
+   "forecast": 38.9,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 40.4,
+    "Gradient boosting": 27.1,
+    "Chronos-Bolt": 49.3
+   },
+   "band": [
+    21.3,
+    68.1
+   ],
+   "last_days": [
+    21.0,
+    2.5,
+    18.2,
+    33.7,
+    56.7,
+    52.2,
+    16.9
+   ]
+  },
+  {
+   "id": 6175399,
+   "name": "Jetisu 2",
+   "provider": "AirGradient",
+   "lat": 43.2227,
+   "lon": 76.8467,
+   "now": 9.7,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 59.1,
+   "based_on": "2026-11-15",
+   "forecast": 42.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.9,
+    "Gradient boosting": 26.3,
+    "Chronos-Bolt": 57.3
+   },
+   "band": [
+    36.1,
+    72.3
+   ],
+   "last_days": [
+    18.1,
+    4.4,
+    20.4,
+    36.8,
+    50.4,
+    59.1,
+    24.9
+   ]
+  },
+  {
+   "id": 6175400,
+   "name": "\u2116154 mektep",
+   "provider": "AirGradient",
+   "lat": 43.2509,
+   "lon": 76.8338,
+   "now": 4.2,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 56.3,
+   "based_on": "2026-11-15",
+   "forecast": 40.7,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.4,
+    "Gradient boosting": 25.1,
+    "Chronos-Bolt": 54.7
+   },
+   "band": [
+    18.5,
+    88.5
+   ],
+   "last_days": [
+    21.2,
+    2.7,
+    15.2,
+    23.3,
+    63.6,
+    56.3,
+    14.6
+   ]
+  },
+  {
+   "id": 6175401,
+   "name": "Aqbulak, 7",
+   "provider": "AirGradient",
+   "lat": 43.2427,
+   "lon": 76.8175,
+   "now": 7.1,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 58.9,
+   "based_on": "2026-11-15",
+   "forecast": 41.7,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 44.4,
+    "Gradient boosting": 23.8,
+    "Chronos-Bolt": 57.0
+   },
+   "band": [
+    24.1,
+    84.1
+   ],
+   "last_days": [
+    24.6,
+    4.8,
+    17.7,
+    32.8,
+    64.8,
+    58.9,
+    19.5
+   ]
+  },
+  {
+   "id": 6175485,
+   "name": "K\u00f6ktem \u015fipazhaiy",
+   "provider": "AirGradient",
+   "lat": 43.2018,
+   "lon": 76.9368,
+   "now": 4.4,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 47.8,
+   "based_on": "2026-11-15",
+   "forecast": 35.2,
+   "forecast_cat": "Moderate",
+   "models": {
+    "Ridge": 36.5,
+    "Gradient boosting": 24.7,
+    "Chronos-Bolt": 44.5
+   },
+   "band": [
+    30.1,
+    54.1
+   ],
+   "last_days": [
+    17.2,
+    4.0,
+    22.2,
+    39.5,
+    40.6,
+    47.8,
+    21.1
+   ]
+  },
+  {
+   "id": 6175486,
+   "name": "Mega Park",
+   "provider": "AirGradient",
+   "lat": 43.2634,
+   "lon": 76.9319,
+   "now": 8.6,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 61.5,
+   "based_on": "2026-11-15",
+   "forecast": 43.5,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 43.9,
+    "Gradient boosting": 25.2,
+    "Chronos-Bolt": 61.4
+   },
+   "band": [
+    39.1,
+    79.5
+   ],
+   "last_days": [
+    21.0,
+    3.5,
+    21.6,
+    33.6,
+    49.0,
+    61.5,
+    24.6
+   ]
+  },
+  {
+   "id": 6175487,
+   "name": "Ermensai (Juldyz \u2013 Ortalyq)",
+   "provider": "AirGradient",
+   "lat": 43.168,
+   "lon": 76.9163,
+   "now": 2.9,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 46.0,
+   "based_on": "2026-11-15",
+   "forecast": 32.7,
+   "forecast_cat": "Moderate",
+   "models": {
+    "Ridge": 35.0,
+    "Gradient boosting": 23.4,
+    "Chronos-Bolt": 39.9
+   },
+   "band": [
+    18.7,
+    63.6
+   ],
+   "last_days": [
+    17.5,
+    2.4,
+    26.4,
+    42.2,
+    32.5,
+    46.0,
+    19.6
+   ]
+  },
+  {
+   "id": 6175488,
+   "name": "K\u00f3kqa\u0131nar auyly, \u211629 mektep",
+   "provider": "AirGradient",
+   "lat": 43.450782,
+   "lon": 76.943029,
+   "now": 7.1,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 72.8,
+   "based_on": "2026-11-15",
+   "forecast": 48.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 52.8,
+    "Gradient boosting": 23.7,
+    "Chronos-Bolt": 68.2
+   },
+   "band": [
+    18.8,
+    112.2
+   ],
+   "last_days": [
+    43.7,
+    14.0,
+    15.1,
+    19.1,
+    73.3,
+    72.8,
+    12.1
+   ]
+  },
+  {
+   "id": 6175489,
+   "name": "Kerei Janibek k-si \u2013 Gornyi t.",
+   "provider": "AirGradient",
+   "lat": 43.2362,
+   "lon": 76.9652,
+   "now": 7.7,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 59.6,
+   "based_on": "2026-11-15",
+   "forecast": 41.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.2,
+    "Gradient boosting": 26.6,
+    "Chronos-Bolt": 55.2
+   },
+   "band": [
+    35.0,
+    70.8
+   ],
+   "last_days": [
+    21.9,
+    1.6,
+    22.1,
+    38.7,
+    41.9,
+    59.6,
+    26.8
+   ]
+  },
+  {
+   "id": 6175490,
+   "name": "Qyzylqa\u0131rat , \u211619 mektep gimnaziya",
+   "provider": "AirGradient",
+   "lat": 43.303307,
+   "lon": 77.185303,
+   "now": 28.3,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 97.4,
+   "based_on": "2026-11-15",
+   "forecast": 64.6,
+   "forecast_cat": "Unhealthy",
+   "models": {
+    "Ridge": 63.4,
+    "Gradient boosting": 38.8,
+    "Chronos-Bolt": 91.7
+   },
+   "band": [
+    59.1,
+    131.6
+   ],
+   "last_days": [
+    38.9,
+    18.7,
+    34.7,
+    50.8,
+    63.0,
+    97.4,
+    41.3
+   ]
+  },
+  {
+   "id": 6175491,
+   "name": "\u2116163 litsei",
+   "provider": "AirGradient",
+   "lat": 43.2204,
+   "lon": 76.9544,
+   "now": 4.1,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 44.0,
+   "based_on": "2026-11-15",
+   "forecast": 32.4,
+   "forecast_cat": "Moderate",
+   "models": {
+    "Ridge": 33.9,
+    "Gradient boosting": 24.4,
+    "Chronos-Bolt": 38.9
+   },
+   "band": [
+    22.2,
+    52.6
+   ],
+   "last_days": [
+    17.3,
+    1.3,
+    18.1,
+    34.1,
+    33.7,
+    44.0,
+    21.0
+   ]
+  },
+  {
+   "id": 6175492,
+   "name": "Tastybulaq (Kazgiprozem)",
+   "provider": "AirGradient",
+   "lat": 43.1729,
+   "lon": 76.8154,
+   "now": 7.0,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 38.8,
+   "based_on": "2026-11-15",
+   "forecast": 29.1,
+   "forecast_cat": "Moderate",
+   "models": {
+    "Ridge": 30.8,
+    "Gradient boosting": 23.8,
+    "Chronos-Bolt": 32.6
+   },
+   "band": [
+    15.7,
+    47.0
+   ],
+   "last_days": [
+    14.4,
+    1.5,
+    17.7,
+    32.1,
+    26.9,
+    38.8,
+    14.1
+   ]
+  },
+  {
+   "id": 6175493,
+   "name": "Duman (Arys k-si)",
+   "provider": "AirGradient",
+   "lat": 43.2777,
+   "lon": 77.0055,
+   "now": 14.3,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 68.0,
+   "based_on": "2026-11-15",
+   "forecast": 48.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 46.4,
+    "Gradient boosting": 30.2,
+    "Chronos-Bolt": 68.3
+   },
+   "band": [
+    39.9,
+    91.3
+   ],
+   "last_days": [
+    25.1,
+    2.7,
+    19.6,
+    31.3,
+    40.3,
+    68.0,
+    31.5
+   ]
+  },
+  {
+   "id": 6175494,
+   "name": "Asqarov k-si",
+   "provider": "AirGradient",
+   "lat": 43.1952,
+   "lon": 76.8645,
+   "now": 5.8,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 57.1,
+   "based_on": "2026-11-15",
+   "forecast": 40.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.4,
+    "Gradient boosting": 25.9,
+    "Chronos-Bolt": 52.4
+   },
+   "band": [
+    34.5,
+    63.5
+   ],
+   "last_days": [
+    25.7,
+    3.1,
+    24.4,
+    42.0,
+    50.7,
+    57.1,
+    19.5
+   ]
+  },
+  {
+   "id": 6175495,
+   "name": "Respublika saraiy",
+   "provider": "AirGradient",
+   "lat": 43.24293,
+   "lon": 76.957006,
+   "now": 9.1,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 57.7,
+   "based_on": "2026-11-15",
+   "forecast": 40.9,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 41.7,
+    "Gradient boosting": 26.7,
+    "Chronos-Bolt": 54.3
+   },
+   "band": [
+    36.3,
+    67.4
+   ],
+   "last_days": [
+    21.5,
+    3.2,
+    23.0,
+    38.6,
+    44.5,
+    57.7,
+    28.0
+   ]
+  },
+  {
+   "id": 6175496,
+   "name": "Qazaqfilm (Baiydosov k-si)",
+   "provider": "AirGradient",
+   "lat": 43.1933,
+   "lon": 76.9035,
+   "now": 14.7,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 54.8,
+   "based_on": "2026-11-15",
+   "forecast": 39.6,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.0,
+    "Gradient boosting": 26.5,
+    "Chronos-Bolt": 50.2
+   },
+   "band": [
+    28.8,
+    64.5
+   ],
+   "last_days": [
+    21.2,
+    2.0,
+    28.0,
+    43.1,
+    63.3,
+    54.8,
+    29.6
+   ]
+  },
+  {
+   "id": 6175497,
+   "name": "\u211612 Qalalyq emhana",
+   "provider": "AirGradient",
+   "lat": 43.2355,
+   "lon": 76.9113,
+   "now": 6.7,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 47.4,
+   "based_on": "2026-11-15",
+   "forecast": 35.0,
+   "forecast_cat": "Moderate",
+   "models": {
+    "Ridge": 36.0,
+    "Gradient boosting": 24.5,
+    "Chronos-Bolt": 44.3
+   },
+   "band": [
+    27.8,
+    55.6
+   ],
+   "last_days": [
+    16.8,
+    1.9,
+    18.9,
+    33.7,
+    38.5,
+    47.4,
+    22.0
+   ]
+  },
+  {
+   "id": 6175498,
+   "name": "QazTSIK, \u211640 mektep",
+   "provider": "AirGradient",
+   "lat": 43.3782,
+   "lon": 76.8364,
+   "now": 8.6,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 53.9,
+   "based_on": "2026-11-15",
+   "forecast": 39.5,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.0,
+    "Gradient boosting": 25.5,
+    "Chronos-Bolt": 51.1
+   },
+   "band": [
+    10.2,
+    88.5
+   ],
+   "last_days": [
+    30.4,
+    7.6,
+    6.9,
+    16.2,
+    61.5,
+    53.9,
+    12.9
+   ]
+  },
+  {
+   "id": 6175499,
+   "name": "Tu\u0131imebaev auyly, \u211619 mektep",
+   "provider": "AirGradient",
+   "lat": 43.4134,
+   "lon": 76.914,
+   "now": 11.0,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 68.6,
+   "based_on": "2026-11-15",
+   "forecast": 50.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 52.6,
+    "Gradient boosting": 37.6,
+    "Chronos-Bolt": 60.5
+   },
+   "band": [
+    6.6,
+    108.6
+   ],
+   "last_days": [
+    45.5,
+    15.2,
+    11.5,
+    21.6,
+    87.0,
+    68.6,
+    15.5
+   ]
+  },
+  {
+   "id": 6175500,
+   "name": "\u211686 mektep-gimnaziya",
+   "provider": "AirGradient",
+   "lat": 43.219879,
+   "lon": 76.859159,
+   "now": 4.6,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 52.9,
+   "based_on": "2026-11-15",
+   "forecast": 39.1,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 38.9,
+    "Gradient boosting": 28.3,
+    "Chronos-Bolt": 50.2
+   },
+   "band": [
+    30.9,
+    64.0
+   ],
+   "last_days": [
+    16.4,
+    1.0,
+    15.4,
+    30.7,
+    42.9,
+    52.9,
+    17.8
+   ]
+  },
+  {
+   "id": 6175502,
+   "name": "Mamyr 1",
+   "provider": "AirGradient",
+   "lat": 43.2114,
+   "lon": 76.8434,
+   "now": 6.5,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 52.3,
+   "based_on": "2026-11-15",
+   "forecast": 39.5,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 39.3,
+    "Gradient boosting": 29.1,
+    "Chronos-Bolt": 50.0
+   },
+   "band": [
+    31.0,
+    60.9
+   ],
+   "last_days": [
+    17.5,
+    1.7,
+    18.5,
+    34.9,
+    49.4,
+    52.3,
+    18.7
+   ]
+  },
+  {
+   "id": 6175503,
+   "name": "Narxoz University",
+   "provider": "AirGradient",
+   "lat": 43.214577,
+   "lon": 76.871985,
+   "now": 2.4,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 39.7,
+   "based_on": "2026-11-15",
+   "forecast": 31.7,
+   "forecast_cat": "Moderate",
+   "models": {
+    "Ridge": 31.0,
+    "Gradient boosting": 26.0,
+    "Chronos-Bolt": 38.1
+   },
+   "band": [
+    25.5,
+    47.0
+   ],
+   "last_days": [
+    10.0,
+    0.4,
+    11.4,
+    22.8,
+    31.4,
+    39.7,
+    12.7
+   ]
+  },
+  {
+   "id": 6175504,
+   "name": "O\u0144t\u00fastik sa\u0131aba\u01f5y | MOST hub",
+   "provider": "AirGradient",
+   "lat": 43.2103,
+   "lon": 76.9083,
+   "now": 5.2,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 49.0,
+   "based_on": "2026-11-15",
+   "forecast": 37.6,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 37.2,
+    "Gradient boosting": 30.1,
+    "Chronos-Bolt": 45.6
+   },
+   "band": [
+    29.1,
+    55.1
+   ],
+   "last_days": [
+    18.4,
+    0.8,
+    20.3,
+    38.0,
+    41.6,
+    49.0,
+    20.8
+   ]
+  },
+  {
+   "id": 6175505,
+   "name": "\u2116116 mektep",
+   "provider": "AirGradient",
+   "lat": 43.2255,
+   "lon": 76.8685,
+   "now": 5.8,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 58.8,
+   "based_on": "2026-11-15",
+   "forecast": 41.7,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 42.2,
+    "Gradient boosting": 26.5,
+    "Chronos-Bolt": 56.4
+   },
+   "band": [
+    35.8,
+    71.6
+   ],
+   "last_days": [
+    18.3,
+    1.7,
+    17.4,
+    33.8,
+    46.6,
+    58.8,
+    19.9
+   ]
+  },
+  {
+   "id": 6175507,
+   "name": "\u211647 mektep",
+   "provider": "AirGradient",
+   "lat": 43.1919,
+   "lon": 76.9681,
+   "now": 2.9,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 54.6,
+   "based_on": "2026-11-15",
+   "forecast": 40.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
+   "models": {
+    "Ridge": 40.9,
+    "Gradient boosting": 29.3,
+    "Chronos-Bolt": 50.6
+   },
+   "band": [
+    32.7,
+    63.9
+   ],
+   "last_days": [
+    23.5,
+    3.9,
+    26.7,
+    43.3,
+    50.0,
+    54.6,
+    22.9
+   ]
+  },
+  {
+   "id": 6175508,
+   "name": "Almaty oblystyq \u21161 balalar uyi",
+   "provider": "AirGradient",
+   "lat": 43.201,
+   "lon": 76.9136,
+   "now": 3.7,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 44.4,
+   "based_on": "2026-11-15",
+   "forecast": 33.6,
+   "forecast_cat": "Moderate",
+   "models": {
+    "Ridge": 34.6,
+    "Gradient boosting": 24.8,
+    "Chronos-Bolt": 41.5
+   },
+   "band": [
+    26.0,
+    50.3
+   ],
+   "last_days": [
+    17.5,
+    0.9,
+    19.4,
+    36.0,
+    38.7,
+    44.4,
+    19.4
+   ]
+  },
+  {
+   "id": 6175509,
+   "name": "Qo\u015fmambet orta mektebi",
+   "provider": "AirGradient",
+   "lat": 43.3322,
+   "lon": 76.6498,
+   "now": 7.4,
+   "now_cat": "Good",
+   "last_reading": "2026-11-16 06:00:00",
+   "today": 68.3,
+   "based_on": "2026-11-15",
+   "forecast": 61.8,
+   "forecast_cat": "Unhealthy",
+   "models": {
+    "Ridge": 63.0,
+    "Gradient boosting": 46.3,
+    "Chronos-Bolt": 76.1
+   },
+   "band": [
+    29.0,
+    144.3
+   ],
+   "last_days": [
+    48.0,
+    172.9,
+    NaN,
+    NaN,
+    113.6,
+    68.3,
+    10.4
+   ]
+  }
+ ],
+ "categories": [
+  [
+   9.0,
+   "Good"
+  ],
+  [
+   35.4,
+   "Moderate"
+  ],
+  [
+   55.4,
+   "Unhealthy for sensitive groups"
+  ],
+  [
+   125.4,
+   "Unhealthy"
+  ],
+  [
+   225.4,
+   "Very unhealthy"
+  ],
+  [
+   1000000000.0,
+   "Hazardous"
+  ]
+ ]
+}

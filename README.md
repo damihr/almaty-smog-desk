@@ -17,13 +17,15 @@ A next-day PM2.5 forecast trained on **real measurements**, which becomes a thre
 
 - **In:** a school's recent PM2.5 sensor readings (OpenAQ), today's weather and tomorrow's weather forecast (Open-Meteo).
 - **Out:** tomorrow's daily-mean PM2.5 and a verdict: **INDOORS** (above 37.5 µg/m³), **OUTDOORS, LIGHT** (15–37.5) or **OUTDOORS** (under 15).
-- **Live example:** from School No.182's sensor data up to 15 Nov 2026, the forecast for 16 Nov is **51.6 µg/m³, INDOORS**.
+- **Live example:** from School No.182's sensor data up to 15 Nov 2026, the ensemble forecast for 16 Nov is **43.3 µg/m³, INDOORS**. Only 2 of 4 models voted INDOORS, so the tool flags low confidence.
+- **City map:** the same models forecast tomorrow at **all 56 live OpenAQ sensors in Almaty**. Each sensor's Voronoi zone is coloured by US EPA category, so parents and schools can see which districts will be safe for outdoor play.
 
-The demo site (5 pages, in `docs/`) has these pages:
+The demo site (6 pages, in `docs/`) has these pages:
 - **Today:** the live verdict, the last 72 hours of the school sensor and the last 8 days.
+- **City map:** live hazard zones across Almaty, switchable between now, yesterday and tomorrow, with every model's prediction for each sensor.
+- **Model showdown:** a leaderboard, all models' live forecasts side by side and a test-period chart you can toggle.
 - **Real-station results:** the test results, explained.
 - **Model data vs reality:** how far the CAMS estimates are from real measurements.
-- **LSTM experiment:** the deep model compared with the deployed one.
 - **How it works:** the pipeline, the model weights and the limits.
 
 ## What we added
@@ -103,7 +105,23 @@ The model still beats the baseline on a cheaper sensor in a different neighbourh
 - CAMS reads 4.2 µg/m³ lower on average, with a typical daily error of 11.2 µg/m³ and a correlation of 0.65.
 - It's close in summer and far too low in winter, which is exactly when it matters.
 
-**4. LSTM experiment (CAMS data, 410 test days)**
+**4. Model showdown on real station data** (embassy monitor, 391 shared test days, cut-off 37.5)
+
+| Rank | Model | Error, all | Heating season | Smog days (error) | Caught / 88 | False alarms |
+|---|---|---|---|---|---|---|
+| 1 | **Ensemble (average of the 4 below)** | **8.36** | **11.91** | **15.28** | 73 | 25 |
+| 2 | LSTM (PyTorch, 14-day sequence) | 8.82 | 12.59 | 18.25 | **75** | **19** |
+| 3 | Ridge | 9.44 | 12.43 | 16.12 | 72 | 25 |
+| 4 | Gradient boosting (histogram GBM, XGBoost-style) | 9.63 | 14.08 | 17.08 | 75 | 31 |
+| 5 | Chronos-Bolt (Amazon foundation model, **zero-shot**) | 9.80 | 14.22 | 19.31 | 59 | 30 |
+| – | Persistence · *baseline* | 10.17 | 14.66 | 20.49 | 61 | 27 |
+
+- **Ranking:** we rank by the average of four ranks: heating-season error, smog-day error, smog days caught and false alarms.
+- **The ensemble cuts error by 18%** compared with the baseline. The ensemble was fixed in advance and not tuned on the test data.
+- **Disagreement is a warning sign.** All 4 models agreed on the INDOORS/OUTDOORS call on 86% of days, and then the error was 7.69. When they disagreed, it was 12.43. The tool shows how many models vote INDOORS.
+- **Chronos's single-number forecast is weak** without training, but its 80% range contained the real value **80.5%** of the time, so its uncertainty is well calibrated.
+
+**5. LSTM experiment (CAMS data, 410 test days)**
 
 | Model | All days | Smog days (> 35) | Smog days caught |
 |---|---|---|---|
@@ -145,7 +163,9 @@ python train.py                 # CAMS data: baselines, Ridge, gradient boosting
 python predict.py               # live CAMS-based forecast -> forecast.json
 python openaq_fetch.py          # real station data -> data/openaq_*.csv
 python train_station.py         # real-station models, school test, CAMS vs reality, live school forecast
-python build_site.py            # builds the 5-page site in docs/
+python compare_models.py        # 5-model showdown + ensemble + live forecasts (downloads Chronos-Bolt, ~200 MB)
+python map_forecast.py          # forecast at every live Almaty sensor for the city map
+python build_site.py            # builds the 6-page site in docs/
 ```
 
 ## Sources
@@ -153,6 +173,8 @@ python build_site.py            # builds the 5-page site in docs/
 - OpenAQ API v3 (US Embassy Almaty via AirNow; AirGradient sensor at School No.182): https://openaq.org
 - Open-Meteo: Air Quality API (Copernicus CAMS), Historical Forecast API, ERA5 Archive API and Forecast API: https://open-meteo.com
 - US EPA PM2.5 AQI breakpoints: https://www.epa.gov/aqi
-- Libraries: scikit-learn, PyTorch, pandas, NumPy, requests, Chart.js.
+- Chronos-Bolt (Amazon, pretrained time-series model): https://huggingface.co/amazon/chronos-bolt-small
+- Map: MapLibre GL JS, OpenFreeMap tiles (© OpenMapTiles, data © OpenStreetMap contributors), d3-delaunay.
+- Libraries: scikit-learn, PyTorch, chronos-forecasting, pandas, NumPy, requests, Chart.js.
 - AI tools: **Claude (Anthropic)** was used as a coding assistant to write and debug code and structure this write-up. We reviewed and can explain every part.
 - Starting point: Veritas AI Hackathon 2026 Project Briefs, suggested project 4.3.2.

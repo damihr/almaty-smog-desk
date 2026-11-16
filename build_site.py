@@ -3,7 +3,9 @@ import json, pathlib, re, shutil
 ROOT = pathlib.Path(__file__).parent
 SITE, OUT = ROOT / "site", ROOT / "docs"
 data = {"cams": json.load(open(ROOT / "results.json")), "cams_fc": json.load(open(ROOT / "forecast.json")),
-        "station": json.load(open(ROOT / "station_results.json")), "school_fc": json.load(open(ROOT / "forecast_school.json"))}
+        "station": json.load(open(ROOT / "station_results.json")), "school_fc": json.load(open(ROOT / "forecast_school.json")),
+        "compare": json.load(open(ROOT / "compare_results.json")),
+        "map": json.load(open(ROOT / "map_results.json"))}
 if OUT.exists(): shutil.rmtree(OUT)
 (OUT / "assets").mkdir(parents=True)
 for f in (SITE / "assets").iterdir(): shutil.copy(f, OUT / "assets" / f.name)

@@ -2,7 +2,7 @@
 const $ = id => document.getElementById(id);
 const fmt = (x, d = 1) => (x == null || isNaN(x)) ? "–" : Number(x).toFixed(d);
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const PAGES = [["index.html", "Today"], ["results.html", "Real-station results"], ["reality.html", "Model data vs reality"], ["models.html", "LSTM experiment"], ["method.html", "How it works"]];
+const PAGES = [["index.html", "Today"], ["map.html", "City map"], ["models.html", "Model showdown"], ["results.html", "Real-station results"], ["reality.html", "Model data vs reality"], ["method.html", "How it works"]];
 function nav() {
   const here = location.pathname.split("/").pop() || "index.html";
   const n = document.createElement("div"); n.className = "nav";
@@ -18,8 +18,9 @@ function nav() {
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
 }
 const charts = [], builders = [];
+var redraw;
 function chart(id, build) { builders.push([id, build]); }
-function redraw() { charts.splice(0).forEach(c => c.destroy()); builders.forEach(([id, b]) => charts.push(new Chart($(id), b()))); }
+redraw = function () { charts.splice(0).forEach(c => c.destroy()); builders.forEach(([id, b]) => charts.push(new Chart($(id), b()))); }
 function baseOpts(ytitle, labels) {
   return { responsive: true, maintainAspectRatio: false, animation: false, interaction: { mode: "index", intersect: false },
     plugins: { legend: { display: false }, tooltip: { callbacks: { label: i => (labels ? labels[i.datasetIndex] + ": " : "") + fmt(i.raw) } } },

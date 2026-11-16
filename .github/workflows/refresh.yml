@@ -1,10 +1,10 @@
-# Refreshes the live snapshot every 3 hours: fetches new sensor data, re-runs all models,
+# Refreshes the live snapshot every hour: fetches new sensor data, re-runs all models,
 # rebuilds docs/ and commits it. Visitors only load the static snapshot (no API calls).
 # Setup: repo Settings -> Secrets and variables -> Actions -> New secret OPENAQ_API_KEY
 name: Refresh live forecast
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "20 * * * *"   # hourly: sensors report hourly, so this is as fresh as the data gets
   workflow_dispatch:
 permissions:
   contents: write

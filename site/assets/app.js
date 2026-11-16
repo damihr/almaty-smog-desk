@@ -10,7 +10,7 @@ function nav() {
   document.body.prepend(n);
   try { const t = new Date(DATA.snapshot_utc), m = Math.round((Date.now() - t) / 60000);
     const ago = m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " h ago" : Math.round(m / 1440) + " d ago";
-    $("snap").innerHTML = `<i></i>Live snapshot · ${ago}`; $("snap").title = "Data refreshed automatically every 3 hours. Snapshot: " + t.toLocaleString(); } catch (e) {}
+    $("snap").innerHTML = `<i></i>Live snapshot · ${ago}`; $("snap").title = "Data refreshed automatically every hour. Snapshot: " + t.toLocaleString(); } catch (e) {}
   const root = document.documentElement; let t; try { t = localStorage.getItem("theme"); } catch (e) {}
   if (t) root.dataset.theme = t;
   $("theme").onclick = () => {

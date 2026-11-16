@@ -156,7 +156,7 @@ The LSTM has the best average but smooths out spikes, so it does worse on the da
 
 ## Live updates
 
-A GitHub Action (`.github/workflows/refresh.yml`) runs **every 3 hours**. It fetches fresh sensor data, re-runs all models, rebuilds the site and commits the new snapshot. Visitors load only the static snapshot, so the site stays fast, needs no login and makes about 8 API calls a day however many people view it. Each page shows how old the snapshot is.
+A GitHub Action (`.github/workflows/refresh.yml`) runs **every hour** (the sensors report hourly, so this is as fresh as the data gets). It fetches fresh sensor data, re-runs all models, rebuilds the site and commits the new snapshot. Visitors load only the static snapshot, so the site stays fast, needs no login and makes the same number of API calls however many people view it. Each page shows how old the snapshot is.
 
 ## How to run
 

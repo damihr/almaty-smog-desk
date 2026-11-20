@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-20 17:59",
- "for": "2026-11-20",
+ "generated": "2026-11-21 02:11",
+ "for": "2026-11-21",
  "sensors": [
   {
    "id": 6158096,
@@ -8,30 +8,30 @@
    "provider": "AirGradient",
    "lat": 43.281,
    "lon": 76.824,
-   "now": 39.1,
-   "now_cat": "Unhealthy for sensitive groups",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 101.3,
-   "based_on": "2026-11-19",
-   "forecast": 74.3,
+   "now": 125.0,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 75.3,
+   "based_on": "2026-11-20",
+   "forecast": 64.8,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 74.6,
-    "Gradient boosting": 56.1,
-    "Chronos-Bolt": 92.3
+    "Ridge": 64.9,
+    "Gradient boosting": 58.6,
+    "Chronos-Bolt": 70.9
    },
    "band": [
-    56.2,
-    128.6
+    38.3,
+    105.3
    ],
    "last_days": [
-    79.3,
     65.6,
     40.2,
     73.5,
     95.9,
     101.3,
-    63.0
+    75.3,
+    120.0
    ]
   },
   {
@@ -40,30 +40,30 @@
    "provider": "AirGradient",
    "lat": 43.2639,
    "lon": 76.8193,
-   "now": 32.7,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 115.5,
-   "based_on": "2026-11-19",
-   "forecast": 84.3,
+   "now": 128.0,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 82.3,
+   "based_on": "2026-11-20",
+   "forecast": 68.4,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 82.1,
-    "Gradient boosting": 63.1,
-    "Chronos-Bolt": 107.8
+    "Ridge": 70.2,
+    "Gradient boosting": 58.7,
+    "Chronos-Bolt": 76.4
    },
    "band": [
-    57.3,
-    160.6
+    29.7,
+    126.5
    ],
    "last_days": [
-    90.1,
     63.6,
     42.3,
     81.0,
     110.1,
     115.5,
-    72.6
+    82.3,
+    135.0
    ]
   },
   {
@@ -72,30 +72,30 @@
    "provider": "AirGradient",
    "lat": 43.241181,
    "lon": 76.933831,
-   "now": 28.4,
+   "now": 25.9,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 57.9,
-   "based_on": "2026-11-19",
-   "forecast": 48.6,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 27.8,
+   "based_on": "2026-11-20",
+   "forecast": 35.0,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 48.3,
-    "Gradient boosting": 43.9,
-    "Chronos-Bolt": 53.5
+    "Ridge": 36.3,
+    "Gradient boosting": 37.4,
+    "Chronos-Bolt": 31.2
    },
    "band": [
-    28.2,
-    79.2
+    6.9,
+    58.6
    ],
    "last_days": [
-    42.5,
     56.8,
     40.8,
     57.7,
     43.2,
     57.9,
-    25.5
+    27.8,
+    23.6
    ]
   },
   {
@@ -104,30 +104,30 @@
    "provider": "AirGradient",
    "lat": 43.2497,
    "lon": 76.9458,
-   "now": 26.0,
+   "now": 20.8,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 56.1,
-   "based_on": "2026-11-19",
-   "forecast": 49.0,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 24.4,
+   "based_on": "2026-11-20",
+   "forecast": 33.0,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 47.6,
-    "Gradient boosting": 47.0,
-    "Chronos-Bolt": 52.4
+    "Ridge": 34.7,
+    "Gradient boosting": 36.2,
+    "Chronos-Bolt": 28.1
    },
    "band": [
-    26.5,
-    80.4
+    3.2,
+    57.8
    ],
    "last_days": [
-    41.9,
     59.9,
     40.6,
     61.7,
     43.5,
     56.1,
-    23.0
+    24.4,
+    20.0
    ]
   },
   {
@@ -136,30 +136,30 @@
    "provider": "AirGradient",
    "lat": 43.2213,
    "lon": 76.7846,
-   "now": 19.1,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 80.9,
-   "based_on": "2026-11-19",
-   "forecast": 68.3,
-   "forecast_cat": "Unhealthy",
+   "now": 88.1,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 49.9,
+   "based_on": "2026-11-20",
+   "forecast": 48.0,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 65.0,
-    "Gradient boosting": 62.2,
-    "Chronos-Bolt": 77.7
+    "Ridge": 52.4,
+    "Gradient boosting": 48.1,
+    "Chronos-Bolt": 43.6
    },
    "band": [
-    44.9,
-    110.9
+    13.6,
+    79.1
    ],
    "last_days": [
-    91.2,
     65.9,
     55.2,
     81.3,
     87.5,
     80.9,
-    38.9
+    49.9,
+    66.0
    ]
   },
   {
@@ -168,30 +168,30 @@
    "provider": "AirGradient",
    "lat": 43.3838,
    "lon": 77.1163,
-   "now": 23.9,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 74.3,
-   "based_on": "2026-11-19",
-   "forecast": 63.4,
-   "forecast_cat": "Unhealthy",
+   "now": 90.1,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 62.7,
+   "based_on": "2026-11-20",
+   "forecast": 53.7,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 61.7,
-    "Gradient boosting": 59.8,
-    "Chronos-Bolt": 68.6
+    "Ridge": 57.7,
+    "Gradient boosting": 47.9,
+    "Chronos-Bolt": 55.6
    },
    "band": [
-    34.1,
-    102.4
+    24.0,
+    83.5
    ],
    "last_days": [
-    72.7,
     80.7,
     51.3,
     85.2,
     87.6,
     74.3,
-    51.8
+    62.7,
+    94.9
    ]
   },
   {
@@ -200,30 +200,30 @@
    "provider": "AirGradient",
    "lat": 43.3503,
    "lon": 76.9888,
-   "now": 17.3,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 112.9,
-   "based_on": "2026-11-19",
-   "forecast": 82.1,
+   "now": 152.3,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 78.0,
+   "based_on": "2026-11-20",
+   "forecast": 65.4,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 77.4,
-    "Gradient boosting": 61.1,
-    "Chronos-Bolt": 107.7
+    "Ridge": 65.7,
+    "Gradient boosting": 59.5,
+    "Chronos-Bolt": 71.1
    },
    "band": [
-    60.1,
-    158.4
+    28.3,
+    117.5
    ],
    "last_days": [
-    65.6,
     55.2,
     33.8,
     60.9,
     94.4,
     112.9,
-    67.3
+    78.0,
+    153.0
    ]
   },
   {
@@ -232,30 +232,30 @@
    "provider": "AirGradient",
    "lat": 43.3958,
    "lon": 76.9865,
-   "now": 15.8,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 126.2,
-   "based_on": "2026-11-19",
-   "forecast": 88.7,
+   "now": 125.0,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 78.1,
+   "based_on": "2026-11-20",
+   "forecast": 68.1,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 85.1,
-    "Gradient boosting": 62.6,
-    "Chronos-Bolt": 118.3
+    "Ridge": 67.6,
+    "Gradient boosting": 63.1,
+    "Chronos-Bolt": 73.6
    },
    "band": [
-    57.7,
-    183.8
+    17.9,
+    135.4
    ],
    "last_days": [
-    70.0,
     61.2,
     33.7,
     66.4,
     108.2,
     126.2,
-    62.8
+    78.1,
+    102.0
    ]
   },
   {
@@ -264,30 +264,30 @@
    "provider": "AirGradient",
    "lat": 43.3364,
    "lon": 76.9775,
-   "now": 19.6,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 145.1,
-   "based_on": "2026-11-19",
-   "forecast": 101.1,
+   "now": 174.3,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 97.7,
+   "based_on": "2026-11-20",
+   "forecast": 78.0,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 96.0,
-    "Gradient boosting": 67.9,
-    "Chronos-Bolt": 139.3
+    "Ridge": 79.5,
+    "Gradient boosting": 64.0,
+    "Chronos-Bolt": 90.5
    },
    "band": [
-    81.6,
-    202.2
+    39.7,
+    148.7
    ],
    "last_days": [
-    82.2,
     66.7,
     42.0,
     79.6,
     118.4,
     145.1,
-    81.3
+    97.7,
+    184.0
    ]
   },
   {
@@ -296,30 +296,30 @@
    "provider": "AirGradient",
    "lat": 43.3695,
    "lon": 76.9869,
-   "now": 18.4,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 138.0,
-   "based_on": "2026-11-19",
-   "forecast": 94.9,
+   "now": 141.7,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 80.0,
+   "based_on": "2026-11-20",
+   "forecast": 69.1,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 90.2,
-    "Gradient boosting": 62.5,
-    "Chronos-Bolt": 132.1
+    "Ridge": 69.1,
+    "Gradient boosting": 63.1,
+    "Chronos-Bolt": 75.1
    },
    "band": [
-    73.8,
-    196.5
+    23.3,
+    136.4
    ],
    "last_days": [
-    68.1,
     60.7,
     34.0,
     66.0,
     105.3,
     138.0,
-    67.7
+    80.0,
+    113.0
    ]
   },
   {
@@ -328,30 +328,30 @@
    "provider": "AirGradient",
    "lat": 43.3454,
    "lon": 76.9588,
-   "now": 16.9,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 193.3,
-   "based_on": "2026-11-19",
-   "forecast": 123.4,
+   "now": 184.7,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 99.6,
+   "based_on": "2026-11-20",
+   "forecast": 83.1,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 120.7,
-    "Gradient boosting": 65.8,
-    "Chronos-Bolt": 183.6
+    "Ridge": 85.6,
+    "Gradient boosting": 66.6,
+    "Chronos-Bolt": 97.0
    },
    "band": [
-    100.3,
-    280.5
+    30.1,
+    187.1
    ],
    "last_days": [
-    106.0,
     73.4,
     44.6,
     81.7,
     136.0,
     193.3,
-    82.4
+    99.6,
+    170.0
    ]
   },
   {
@@ -360,30 +360,30 @@
    "provider": "AirGradient",
    "lat": 43.3253,
    "lon": 76.9676,
-   "now": 14.4,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 131.3,
-   "based_on": "2026-11-19",
-   "forecast": 93.4,
+   "now": 163.7,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 78.6,
+   "based_on": "2026-11-20",
+   "forecast": 68.4,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 88.2,
-    "Gradient boosting": 67.4,
-    "Chronos-Bolt": 124.5
+    "Ridge": 68.8,
+    "Gradient boosting": 63.1,
+    "Chronos-Bolt": 73.5
    },
    "band": [
-    70.2,
-    183.9
+    28.5,
+    128.7
    ],
    "last_days": [
-    83.3,
     63.0,
     38.6,
     68.1,
     107.0,
     131.3,
-    69.7
+    78.6,
+    159.0
    ]
   },
   {
@@ -392,30 +392,30 @@
    "provider": "AirGradient",
    "lat": 43.3439,
    "lon": 77.0072,
-   "now": 22.3,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 115.6,
-   "based_on": "2026-11-19",
-   "forecast": 85.6,
+   "now": 161.7,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 81.9,
+   "based_on": "2026-11-20",
+   "forecast": 67.5,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 81.7,
-    "Gradient boosting": 63.2,
-    "Chronos-Bolt": 112.0
+    "Ridge": 69.6,
+    "Gradient boosting": 58.5,
+    "Chronos-Bolt": 74.5
    },
    "band": [
-    68.8,
-    157.1
+    36.1,
+    116.6
    ],
    "last_days": [
-    72.6,
     65.1,
     44.2,
     81.5,
     110.4,
     115.6,
-    68.5
+    81.9,
+    175.0
    ]
   },
   {
@@ -424,30 +424,30 @@
    "provider": "AirGradient",
    "lat": 43.3105,
    "lon": 76.8742,
-   "now": 21.7,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 139.1,
-   "based_on": "2026-11-19",
-   "forecast": 95.5,
+   "now": 168.7,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 87.7,
+   "based_on": "2026-11-20",
+   "forecast": 72.1,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 93.0,
-    "Gradient boosting": 63.8,
-    "Chronos-Bolt": 129.6
+    "Ridge": 74.1,
+    "Gradient boosting": 61.4,
+    "Chronos-Bolt": 80.8
    },
    "band": [
-    66.8,
-    198.5
+    26.7,
+    143.4
    ],
    "last_days": [
-    84.3,
     62.9,
     39.7,
     68.6,
     123.0,
     139.1,
-    59.7
+    87.7,
+    167.0
    ]
   },
   {
@@ -456,30 +456,30 @@
    "provider": "AirGradient",
    "lat": 43.3382,
    "lon": 76.8995,
-   "now": 14.2,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 126.1,
-   "based_on": "2026-11-19",
-   "forecast": 89.8,
+   "now": 132.3,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 83.7,
+   "based_on": "2026-11-20",
+   "forecast": 69.8,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 84.4,
-    "Gradient boosting": 65.6,
-    "Chronos-Bolt": 119.5
+    "Ridge": 69.8,
+    "Gradient boosting": 62.2,
+    "Chronos-Bolt": 77.3
    },
    "band": [
-    61.4,
-    183.0
+    24.2,
+    135.6
    ],
    "last_days": [
-    60.0,
     63.5,
     31.4,
     66.9,
     105.1,
     126.1,
-    61.8
+    83.7,
+    110.0
    ]
   },
   {
@@ -488,30 +488,30 @@
    "provider": "AirGradient",
    "lat": 43.3575,
    "lon": 76.9354,
-   "now": 12.1,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 113.6,
-   "based_on": "2026-11-19",
-   "forecast": 82.6,
+   "now": 95.5,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 67.7,
+   "based_on": "2026-11-20",
+   "forecast": 61.9,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 77.9,
-    "Gradient boosting": 66.4,
-    "Chronos-Bolt": 103.6
+    "Ridge": 61.1,
+    "Gradient boosting": 61.8,
+    "Chronos-Bolt": 62.8
    },
    "band": [
-    46.8,
-    163.9
+    11.1,
+    120.0
    ],
    "last_days": [
-    73.2,
     59.9,
     26.8,
     56.8,
     97.6,
     113.6,
-    52.8
+    67.7,
+    75.7
    ]
   },
   {
@@ -520,30 +520,30 @@
    "provider": "AirGradient",
    "lat": 43.3238,
    "lon": 76.9111,
-   "now": 24.7,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 130.0,
-   "based_on": "2026-11-19",
-   "forecast": 90.0,
+   "now": 138.7,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 76.6,
+   "based_on": "2026-11-20",
+   "forecast": 67.4,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 86.2,
-    "Gradient boosting": 62.5,
-    "Chronos-Bolt": 121.3
+    "Ridge": 66.8,
+    "Gradient boosting": 64.0,
+    "Chronos-Bolt": 71.5
    },
    "band": [
-    65.0,
-    182.7
+    22.5,
+    129.0
    ],
    "last_days": [
-    72.6,
     60.5,
     33.7,
     60.6,
     100.0,
     130.0,
-    61.8
+    76.6,
+    115.0
    ]
   },
   {
@@ -552,30 +552,30 @@
    "provider": "AirGradient",
    "lat": 43.3251,
    "lon": 76.9866,
-   "now": 13.5,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 107.5,
-   "based_on": "2026-11-19",
-   "forecast": 80.2,
+   "now": 126.3,
+   "now_cat": "Very unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 64.5,
+   "based_on": "2026-11-20",
+   "forecast": 60.1,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 76.5,
-    "Gradient boosting": 60.9,
-    "Chronos-Bolt": 103.3
+    "Ridge": 60.1,
+    "Gradient boosting": 60.6,
+    "Chronos-Bolt": 59.6
    },
    "band": [
-    59.9,
-    148.4
+    21.3,
+    103.8
    ],
    "last_days": [
-    74.2,
     62.3,
     40.2,
     71.7,
     99.6,
     107.5,
-    55.8
+    64.5,
+    140.0
    ]
   },
   {
@@ -584,30 +584,30 @@
    "provider": "AirGradient",
    "lat": 43.2452,
    "lon": 76.9075,
-   "now": 25.8,
+   "now": 16.7,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 44.0,
-   "based_on": "2026-11-19",
-   "forecast": 40.6,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 24.4,
+   "based_on": "2026-11-20",
+   "forecast": 30.6,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 40.9,
-    "Gradient boosting": 38.6,
-    "Chronos-Bolt": 42.2
+    "Ridge": 33.0,
+    "Gradient boosting": 36.8,
+    "Chronos-Bolt": 22.1
    },
    "band": [
-    22.6,
-    58.8
+    2.0,
+    42.4
    ],
    "last_days": [
-    38.5,
     50.0,
     35.0,
     49.9,
     44.1,
     44.0,
-    24.2
+    24.4,
+    14.5
    ]
   },
   {
@@ -616,30 +616,30 @@
    "provider": "AirGradient",
    "lat": 43.2537,
    "lon": 76.9064,
-   "now": 24.9,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 53.4,
-   "based_on": "2026-11-19",
-   "forecast": 46.8,
+   "now": 36.0,
+   "now_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 32.4,
+   "based_on": "2026-11-20",
+   "forecast": 36.7,
    "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 48.1,
-    "Gradient boosting": 41.7,
-    "Chronos-Bolt": 50.7
+    "Ridge": 39.2,
+    "Gradient boosting": 43.0,
+    "Chronos-Bolt": 27.8
    },
    "band": [
-    25.3,
-    78.1
+    5.7,
+    53.3
    ],
    "last_days": [
-    46.2,
     54.4,
     40.4,
     72.0,
     64.9,
     53.4,
-    31.6
+    32.4,
+    30.6
    ]
   },
   {
@@ -648,30 +648,30 @@
    "provider": "AirGradient",
    "lat": 43.2414,
    "lon": 76.8608,
-   "now": 19.8,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 62.9,
-   "based_on": "2026-11-19",
-   "forecast": 53.1,
+   "now": 58.7,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 39.9,
+   "based_on": "2026-11-20",
+   "forecast": 41.2,
    "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 52.7,
-    "Gradient boosting": 46.8,
-    "Chronos-Bolt": 60.0
+    "Ridge": 43.5,
+    "Gradient boosting": 44.7,
+    "Chronos-Bolt": 35.5
    },
    "band": [
-    31.5,
-    86.3
+    8.1,
+    62.8
    ],
    "last_days": [
-    54.8,
     59.4,
     35.8,
     63.4,
     67.6,
     62.9,
-    35.3
+    39.9,
+    47.4
    ]
   },
   {
@@ -680,30 +680,30 @@
    "provider": "AirGradient",
    "lat": 43.2536,
    "lon": 76.9283,
-   "now": 25.3,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 68.4,
-   "based_on": "2026-11-19",
-   "forecast": 56.1,
-   "forecast_cat": "Unhealthy",
+   "now": 36.9,
+   "now_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 31.8,
+   "based_on": "2026-11-20",
+   "forecast": 39.1,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 54.7,
-    "Gradient boosting": 47.2,
-    "Chronos-Bolt": 66.3
+    "Ridge": 39.8,
+    "Gradient boosting": 45.2,
+    "Chronos-Bolt": 32.1
    },
    "band": [
-    40.1,
-    93.2
+    5.2,
+    63.9
    ],
    "last_days": [
-    44.9,
     57.1,
     40.1,
     68.3,
     61.1,
     68.4,
-    28.1
+    31.8,
+    32.6
    ]
   },
   {
@@ -712,30 +712,30 @@
    "provider": "AirGradient",
    "lat": 43.2734,
    "lon": 76.939,
-   "now": 28.0,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 102.3,
-   "based_on": "2026-11-19",
-   "forecast": 79.6,
-   "forecast_cat": "Unhealthy",
+   "now": 83.1,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 52.2,
+   "based_on": "2026-11-20",
+   "forecast": 53.7,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 80.2,
-    "Gradient boosting": 61.6,
-    "Chronos-Bolt": 97.1
+    "Ridge": 58.4,
+    "Gradient boosting": 57.8,
+    "Chronos-Bolt": 44.8
    },
    "band": [
-    58.0,
-    141.4
+    11.1,
+    92.0
    ],
    "last_days": [
-    96.0,
     90.2,
     69.5,
     115.1,
     122.9,
     102.3,
-    40.0
+    52.2,
+    68.3
    ]
   },
   {
@@ -744,30 +744,30 @@
    "provider": "AirGradient",
    "lat": 43.2209,
    "lon": 76.8362,
-   "now": 22.2,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 62.9,
-   "based_on": "2026-11-19",
-   "forecast": 54.7,
+   "now": 36.2,
+   "now_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 34.3,
+   "based_on": "2026-11-20",
+   "forecast": 40.8,
    "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 52.3,
-    "Gradient boosting": 53.7,
-    "Chronos-Bolt": 58.1
+    "Ridge": 41.0,
+    "Gradient boosting": 44.8,
+    "Chronos-Bolt": 36.7
    },
    "band": [
-    28.1,
-    88.6
+    8.4,
+    67.9
    ],
    "last_days": [
-    56.0,
     62.6,
     40.1,
     72.9,
     53.0,
     62.9,
-    31.1
+    34.3,
+    29.3
    ]
   },
   {
@@ -776,30 +776,30 @@
    "provider": "AirGradient",
    "lat": 43.274,
    "lon": 76.9108,
-   "now": 22.0,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 94.5,
-   "based_on": "2026-11-19",
-   "forecast": 74.3,
-   "forecast_cat": "Unhealthy",
+   "now": 101.7,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 56.7,
+   "based_on": "2026-11-20",
+   "forecast": 55.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 70.3,
-    "Gradient boosting": 62.0,
-    "Chronos-Bolt": 90.6
+    "Ridge": 55.5,
+    "Gradient boosting": 58.3,
+    "Chronos-Bolt": 52.1
    },
    "band": [
-    52.2,
-    130.9
+    18.2,
+    91.3
    ],
    "last_days": [
-    67.4,
     65.6,
     40.1,
     79.0,
     94.2,
     94.5,
-    50.6
+    56.7,
+    101.0
    ]
   },
   {
@@ -808,30 +808,30 @@
    "provider": "AirGradient",
    "lat": 43.2197,
    "lon": 76.8015,
-   "now": 24.6,
+   "now": 33.6,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 47.4,
-   "based_on": "2026-11-19",
-   "forecast": 42.5,
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 32.2,
+   "based_on": "2026-11-20",
+   "forecast": 36.1,
    "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 43.7,
-    "Gradient boosting": 39.2,
-    "Chronos-Bolt": 44.5
+    "Ridge": 37.8,
+    "Gradient boosting": 38.8,
+    "Chronos-Bolt": 31.8
    },
    "band": [
-    18.4,
-    67.4
+    7.1,
+    56.4
    ],
    "last_days": [
-    60.3,
     49.6,
     36.5,
     57.7,
     45.6,
     47.4,
-    26.2
+    32.2,
+    19.1
    ]
   },
   {
@@ -840,30 +840,30 @@
    "provider": "AirGradient",
    "lat": 43.2604,
    "lon": 76.8725,
-   "now": 27.6,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 86.0,
-   "based_on": "2026-11-19",
-   "forecast": 69.1,
+   "now": 97.3,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 57.0,
+   "based_on": "2026-11-20",
+   "forecast": 56.5,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 65.2,
-    "Gradient boosting": 61.7,
-    "Chronos-Bolt": 80.3
+    "Ridge": 54.2,
+    "Gradient boosting": 62.4,
+    "Chronos-Bolt": 52.9
    },
    "band": [
-    41.1,
-    119.7
+    16.4,
+    91.5
    ],
    "last_days": [
-    71.1,
     59.9,
     33.6,
     65.4,
     87.0,
     86.0,
-    46.0
+    57.0,
+    93.0
    ]
   },
   {
@@ -872,30 +872,30 @@
    "provider": "AirGradient",
    "lat": 43.2811,
    "lon": 76.8806,
-   "now": 18.6,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 102.1,
-   "based_on": "2026-11-19",
-   "forecast": 76.3,
+   "now": 112.7,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 61.2,
+   "based_on": "2026-11-20",
+   "forecast": 58.5,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 73.1,
-    "Gradient boosting": 60.0,
-    "Chronos-Bolt": 95.7
+    "Ridge": 57.6,
+    "Gradient boosting": 60.7,
+    "Chronos-Bolt": 57.3
    },
    "band": [
-    50.8,
-    143.0
+    17.7,
+    102.9
    ],
    "last_days": [
-    76.3,
     58.5,
     35.9,
     62.5,
     93.6,
     102.1,
-    54.8
+    61.2,
+    112.0
    ]
   },
   {
@@ -904,30 +904,30 @@
    "provider": "AirGradient",
    "lat": 43.2466,
    "lon": 76.8681,
-   "now": 23.3,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 70.9,
-   "based_on": "2026-11-19",
-   "forecast": 56.8,
-   "forecast_cat": "Unhealthy",
+   "now": 63.3,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 40.6,
+   "based_on": "2026-11-20",
+   "forecast": 41.8,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 56.0,
-    "Gradient boosting": 46.1,
-    "Chronos-Bolt": 68.3
+    "Ridge": 44.0,
+    "Gradient boosting": 44.6,
+    "Chronos-Bolt": 36.6
    },
    "band": [
-    39.2,
-    97.1
+    9.0,
+    66.5
    ],
    "last_days": [
-    50.8,
     55.8,
     32.8,
     61.6,
     70.0,
     70.9,
-    33.9
+    40.6,
+    71.7
    ]
   },
   {
@@ -936,30 +936,30 @@
    "provider": "AirGradient",
    "lat": 43.21574,
    "lon": 76.791652,
-   "now": 19.0,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 47.7,
-   "based_on": "2026-11-19",
-   "forecast": 44.6,
+   "now": 46.5,
+   "now_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 32.6,
+   "based_on": "2026-11-20",
+   "forecast": 36.5,
    "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 44.6,
-    "Gradient boosting": 44.1,
-    "Chronos-Bolt": 45.1
+    "Ridge": 38.4,
+    "Gradient boosting": 40.5,
+    "Chronos-Bolt": 30.6
    },
    "band": [
-    16.8,
-    69.7
+    4.8,
+    54.9
    ],
    "last_days": [
-    56.7,
     52.2,
     35.8,
     63.3,
     55.5,
     47.7,
-    27.8
+    32.6,
+    34.5
    ]
   },
   {
@@ -968,30 +968,30 @@
    "provider": "AirGradient",
    "lat": 43.2227,
    "lon": 76.8467,
-   "now": 25.3,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 53.2,
-   "based_on": "2026-11-19",
-   "forecast": 47.1,
+   "now": 39.0,
+   "now_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 30.4,
+   "based_on": "2026-11-20",
+   "forecast": 36.2,
    "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 46.9,
-    "Gradient boosting": 44.1,
-    "Chronos-Bolt": 50.4
+    "Ridge": 37.7,
+    "Gradient boosting": 41.2,
+    "Chronos-Bolt": 29.7
    },
    "band": [
-    25.6,
-    73.6
+    5.1,
+    55.3
    ],
    "last_days": [
-    50.4,
     59.1,
     39.3,
     62.4,
     49.3,
     53.2,
-    28.5
+    30.4,
+    49.4
    ]
   },
   {
@@ -1000,30 +1000,30 @@
    "provider": "AirGradient",
    "lat": 43.2509,
    "lon": 76.8338,
-   "now": 21.5,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 88.6,
-   "based_on": "2026-11-19",
-   "forecast": 69.2,
-   "forecast_cat": "Unhealthy",
+   "now": 75.0,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 48.0,
+   "based_on": "2026-11-20",
+   "forecast": 52.2,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 65.6,
-    "Gradient boosting": 57.7,
-    "Chronos-Bolt": 84.3
+    "Ridge": 49.7,
+    "Gradient boosting": 61.3,
+    "Chronos-Bolt": 45.5
    },
    "band": [
-    46.9,
-    122.3
+    10.6,
+    85.1
    ],
    "last_days": [
-    63.6,
     56.3,
     34.2,
     63.9,
     82.5,
     88.6,
-    37.4
+    48.0,
+    64.0
    ]
   },
   {
@@ -1032,30 +1032,30 @@
    "provider": "AirGradient",
    "lat": 43.2427,
    "lon": 76.8175,
-   "now": 22.7,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 81.1,
-   "based_on": "2026-11-19",
-   "forecast": 65.9,
-   "forecast_cat": "Unhealthy",
+   "now": 62.4,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 45.6,
+   "based_on": "2026-11-20",
+   "forecast": 48.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 62.5,
-    "Gradient boosting": 57.8,
-    "Chronos-Bolt": 77.4
+    "Ridge": 48.4,
+    "Gradient boosting": 52.7,
+    "Chronos-Bolt": 43.9
    },
    "band": [
-    43.3,
-    109.6
+    10.5,
+    79.3
    ],
    "last_days": [
-    64.8,
     58.9,
     40.0,
     74.8,
     76.8,
     81.1,
-    36.8
+    45.6,
+    53.6
    ]
   },
   {
@@ -1064,30 +1064,30 @@
    "provider": "AirGradient",
    "lat": 43.2018,
    "lon": 76.9368,
-   "now": 20.4,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 22.8,
-   "based_on": "2026-11-19",
-   "forecast": 27.0,
+   "now": 8.9,
+   "now_cat": "Good",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 14.8,
+   "based_on": "2026-11-20",
+   "forecast": 23.2,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 28.8,
-    "Gradient boosting": 30.8,
-    "Chronos-Bolt": 21.3
+    "Ridge": 25.4,
+    "Gradient boosting": 31.9,
+    "Chronos-Bolt": 12.3
    },
    "band": [
-    7.9,
-    37.5
+    2.3,
+    26.7
    ],
    "last_days": [
-    40.6,
     47.8,
     31.5,
     27.8,
     20.0,
     22.8,
-    13.1
+    14.8,
+    4.9
    ]
   },
   {
@@ -1096,30 +1096,30 @@
    "provider": "AirGradient",
    "lat": 43.2634,
    "lon": 76.9319,
-   "now": 26.4,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 74.8,
-   "based_on": "2026-11-19",
-   "forecast": 63.1,
-   "forecast_cat": "Unhealthy",
+   "now": 47.6,
+   "now_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 36.4,
+   "based_on": "2026-11-20",
+   "forecast": 42.3,
+   "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 59.3,
-    "Gradient boosting": 57.4,
-    "Chronos-Bolt": 72.8
+    "Ridge": 43.4,
+    "Gradient boosting": 50.3,
+    "Chronos-Bolt": 33.3
    },
    "band": [
-    44.3,
-    102.2
+    5.2,
+    66.8
    ],
    "last_days": [
-    49.0,
     61.5,
     42.6,
     75.7,
     75.1,
     74.8,
-    33.3
+    36.4,
+    43.2
    ]
   },
   {
@@ -1128,30 +1128,30 @@
    "provider": "AirGradient",
    "lat": 43.168,
    "lon": 76.9163,
-   "now": 16.5,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 11.6,
-   "based_on": "2026-11-19",
-   "forecast": 20.0,
+   "now": 2.6,
+   "now_cat": "Good",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 9.3,
+   "based_on": "2026-11-20",
+   "forecast": 19.0,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 22.0,
+    "Ridge": 20.8,
     "Gradient boosting": 27.2,
-    "Chronos-Bolt": 10.8
+    "Chronos-Bolt": 8.9
    },
    "band": [
-    2.4,
-    31.6
+    5.1,
+    25.4
    ],
    "last_days": [
-    32.5,
     46.0,
     24.0,
     13.1,
     10.2,
     11.6,
-    11.1
+    9.3,
+    1.7
    ]
   },
   {
@@ -1160,30 +1160,30 @@
    "provider": "AirGradient",
    "lat": 43.450782,
    "lon": 76.943029,
-   "now": 20.2,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 96.2,
-   "based_on": "2026-11-19",
-   "forecast": 75.1,
+   "now": 118.2,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 75.5,
+   "based_on": "2026-11-20",
+   "forecast": 64.6,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 73.3,
-    "Gradient boosting": 62.2,
-    "Chronos-Bolt": 89.7
+    "Ridge": 65.5,
+    "Gradient boosting": 57.5,
+    "Chronos-Bolt": 70.6
    },
    "band": [
-    38.1,
-    144.8
+    21.8,
+    122.2
    ],
    "last_days": [
-    73.3,
     72.8,
     50.5,
     66.1,
     122.9,
     96.2,
-    59.0
+    75.5,
+    92.6
    ]
   },
   {
@@ -1192,30 +1192,30 @@
    "provider": "AirGradient",
    "lat": 43.2362,
    "lon": 76.9652,
-   "now": 32.4,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 37.1,
-   "based_on": "2026-11-19",
-   "forecast": 36.5,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "now": 6.3,
+   "now_cat": "Good",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 18.3,
+   "based_on": "2026-11-20",
+   "forecast": 28.2,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 36.9,
-    "Gradient boosting": 37.6,
-    "Chronos-Bolt": 35.0
+    "Ridge": 29.3,
+    "Gradient boosting": 34.7,
+    "Chronos-Bolt": 20.6
    },
    "band": [
-    13.3,
-    59.7
+    1.4,
+    44.8
    ],
    "last_days": [
-    41.9,
     59.6,
     36.2,
     42.6,
     27.3,
     37.1,
-    17.0
+    18.3,
+    4.5
    ]
   },
   {
@@ -1224,30 +1224,30 @@
    "provider": "AirGradient",
    "lat": 43.303307,
    "lon": 77.185303,
-   "now": 95.3,
-   "now_cat": "Unhealthy",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 35.1,
-   "based_on": "2026-11-19",
-   "forecast": 43.5,
+   "now": 10.9,
+   "now_cat": "Moderate",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 29.5,
+   "based_on": "2026-11-20",
+   "forecast": 38.8,
    "forecast_cat": "Unhealthy for sensitive groups",
    "models": {
-    "Ridge": 41.0,
-    "Gradient boosting": 51.3,
-    "Chronos-Bolt": 38.1
+    "Ridge": 37.9,
+    "Gradient boosting": 46.8,
+    "Chronos-Bolt": 31.7
    },
    "band": [
-    22.6,
-    76.4
+    19.1,
+    66.4
    ],
    "last_days": [
-    63.0,
     97.4,
     48.2,
     67.0,
     51.7,
     35.1,
-    31.9
+    29.5,
+    14.1
    ]
   },
   {
@@ -1256,30 +1256,30 @@
    "provider": "AirGradient",
    "lat": 43.2204,
    "lon": 76.9544,
-   "now": 21.5,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 30.6,
-   "based_on": "2026-11-19",
-   "forecast": 31.1,
+   "now": 3.3,
+   "now_cat": "Good",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 12.4,
+   "based_on": "2026-11-20",
+   "forecast": 24.8,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 32.1,
-    "Gradient boosting": 33.2,
-    "Chronos-Bolt": 28.0
+    "Ridge": 24.7,
+    "Gradient boosting": 32.7,
+    "Chronos-Bolt": 16.9
    },
    "band": [
-    9.8,
-    47.9
+    -0.0,
+    37.2
    ],
    "last_days": [
-    33.7,
     44.0,
     26.2,
     35.0,
     21.0,
     30.6,
-    13.3
+    12.4,
+    2.1
    ]
   },
   {
@@ -1288,30 +1288,30 @@
    "provider": "AirGradient",
    "lat": 43.1729,
    "lon": 76.8154,
-   "now": 8.8,
+   "now": 1.5,
    "now_cat": "Good",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 14.5,
-   "based_on": "2026-11-19",
-   "forecast": 21.7,
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 6.9,
+   "based_on": "2026-11-20",
+   "forecast": 18.4,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 22.9,
-    "Gradient boosting": 28.1,
-    "Chronos-Bolt": 14.2
+    "Ridge": 19.7,
+    "Gradient boosting": 26.7,
+    "Chronos-Bolt": 8.8
    },
    "band": [
-    1.9,
-    32.0
+    -1.8,
+    25.9
    ],
    "last_days": [
-    26.9,
     38.8,
     20.5,
     19.8,
     11.6,
     14.5,
-    8.3
+    6.9,
+    1.4
    ]
   },
   {
@@ -1320,30 +1320,30 @@
    "provider": "AirGradient",
    "lat": 43.2777,
    "lon": 77.0055,
-   "now": 24.9,
+   "now": 17.7,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 50.3,
-   "based_on": "2026-11-19",
-   "forecast": 46.0,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 25.3,
+   "based_on": "2026-11-20",
+   "forecast": 33.9,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 45.6,
-    "Gradient boosting": 44.1,
-    "Chronos-Bolt": 48.3
+    "Ridge": 35.2,
+    "Gradient boosting": 39.7,
+    "Chronos-Bolt": 26.9
    },
    "band": [
-    20.7,
-    77.3
+    0.5,
+    56.7
    ],
    "last_days": [
-    40.3,
     68.0,
     41.3,
     62.1,
     51.3,
     50.3,
-    29.2
+    25.3,
+    13.9
    ]
   },
   {
@@ -1352,30 +1352,30 @@
    "provider": "AirGradient",
    "lat": 43.1952,
    "lon": 76.8645,
-   "now": 28.3,
+   "now": 21.3,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 45.2,
-   "based_on": "2026-11-19",
-   "forecast": 39.5,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 20.0,
+   "based_on": "2026-11-20",
+   "forecast": 30.7,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 40.8,
-    "Gradient boosting": 38.1,
-    "Chronos-Bolt": 39.5
+    "Ridge": 30.8,
+    "Gradient boosting": 36.2,
+    "Chronos-Bolt": 25.0
    },
    "band": [
-    13.6,
-    64.7
+    2.5,
+    50.9
    ],
    "last_days": [
-    50.7,
     57.1,
     35.1,
     43.7,
     24.9,
     45.2,
-    21.3
+    20.0,
+    7.5
    ]
   },
   {
@@ -1384,30 +1384,30 @@
    "provider": "AirGradient",
    "lat": 43.24293,
    "lon": 76.957006,
-   "now": 26.7,
+   "now": 16.2,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 49.1,
-   "based_on": "2026-11-19",
-   "forecast": 42.4,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 24.1,
+   "based_on": "2026-11-20",
+   "forecast": 32.4,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 43.3,
-    "Gradient boosting": 39.8,
-    "Chronos-Bolt": 44.1
+    "Ridge": 33.4,
+    "Gradient boosting": 36.2,
+    "Chronos-Bolt": 27.5
    },
    "band": [
-    19.7,
-    70.3
+    5.8,
+    53.3
    ],
    "last_days": [
-    44.5,
     57.7,
     36.9,
     52.4,
     33.3,
     49.1,
-    21.6
+    24.1,
+    8.4
    ]
   },
   {
@@ -1416,30 +1416,30 @@
    "provider": "AirGradient",
    "lat": 43.1933,
    "lon": 76.9035,
-   "now": 23.3,
+   "now": 18.9,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 31.3,
-   "based_on": "2026-11-19",
-   "forecast": 34.0,
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 19.0,
+   "based_on": "2026-11-20",
+   "forecast": 26.5,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 34.4,
-    "Gradient boosting": 37.5,
-    "Chronos-Bolt": 30.0
+    "Ridge": 29.4,
+    "Gradient boosting": 32.4,
+    "Chronos-Bolt": 17.7
    },
    "band": [
-    8.8,
-    54.9
+    1.7,
+    40.8
    ],
    "last_days": [
-    63.3,
     54.8,
     33.8,
     38.8,
     23.3,
     31.3,
-    14.9
+    19.0,
+    12.1
    ]
   },
   {
@@ -1448,30 +1448,30 @@
    "provider": "AirGradient",
    "lat": 43.2355,
    "lon": 76.9113,
-   "now": 22.4,
+   "now": 14.2,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 40.6,
-   "based_on": "2026-11-19",
-   "forecast": 38.1,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 21.2,
+   "based_on": "2026-11-20",
+   "forecast": 29.3,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 38.3,
-    "Gradient boosting": 37.4,
-    "Chronos-Bolt": 38.4
+    "Ridge": 30.5,
+    "Gradient boosting": 36.1,
+    "Chronos-Bolt": 21.4
    },
    "band": [
-    19.5,
-    53.7
+    2.0,
+    40.5
    ],
    "last_days": [
-    38.5,
     47.4,
     31.6,
     40.1,
     34.2,
     40.6,
-    20.9
+    21.2,
+    11.5
    ]
   },
   {
@@ -1480,30 +1480,30 @@
    "provider": "AirGradient",
    "lat": 43.3782,
    "lon": 76.8364,
-   "now": 20.4,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 112.9,
-   "based_on": "2026-11-19",
-   "forecast": 84.4,
+   "now": 121.0,
+   "now_cat": "Unhealthy",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 68.1,
+   "based_on": "2026-11-20",
+   "forecast": 61.8,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 78.5,
-    "Gradient boosting": 65.5,
-    "Chronos-Bolt": 109.1
+    "Ridge": 61.6,
+    "Gradient boosting": 61.8,
+    "Chronos-Bolt": 62.0
    },
    "band": [
-    60.4,
-    161.3
+    17.4,
+    111.1
    ],
    "last_days": [
-    61.5,
     53.9,
     41.0,
     63.4,
     108.3,
     112.9,
-    51.6
+    68.1,
+    138.0
    ]
   },
   {
@@ -1512,30 +1512,30 @@
    "provider": "AirGradient",
    "lat": 43.4134,
    "lon": 76.914,
-   "now": 97.6,
+   "now": 121.0,
    "now_cat": "Unhealthy",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 130.0,
-   "based_on": "2026-11-19",
-   "forecast": 92.5,
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 116.0,
+   "based_on": "2026-11-20",
+   "forecast": 85.4,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 90.8,
-    "Gradient boosting": 64.4,
-    "Chronos-Bolt": 122.3
+    "Ridge": 87.9,
+    "Gradient boosting": 61.7,
+    "Chronos-Bolt": 106.4
    },
    "band": [
-    60.2,
-    188.2
+    47.6,
+    165.5
    ],
    "last_days": [
-    87.0,
     68.6,
     48.9,
     83.4,
     136.9,
     130.0,
-    68.7
+    116.0,
+    108.0
    ]
   },
   {
@@ -1544,30 +1544,30 @@
    "provider": "AirGradient",
    "lat": 43.219879,
    "lon": 76.859159,
-   "now": 19.0,
+   "now": 21.4,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 44.7,
-   "based_on": "2026-11-19",
-   "forecast": 40.2,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 23.2,
+   "based_on": "2026-11-20",
+   "forecast": 31.4,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 40.7,
-    "Gradient boosting": 39.4,
-    "Chronos-Bolt": 40.6
+    "Ridge": 32.3,
+    "Gradient boosting": 36.5,
+    "Chronos-Bolt": 25.2
    },
    "band": [
-    15.9,
-    64.2
+    2.0,
+    49.5
    ],
    "last_days": [
-    42.9,
     52.9,
     33.4,
     50.5,
     33.1,
     44.7,
-    20.4
+    23.2,
+    15.1
    ]
   },
   {
@@ -1576,30 +1576,30 @@
    "provider": "AirGradient",
    "lat": 43.2114,
    "lon": 76.8434,
-   "now": 18.5,
+   "now": 13.7,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 39.2,
-   "based_on": "2026-11-19",
-   "forecast": 37.7,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 21.1,
+   "based_on": "2026-11-20",
+   "forecast": 29.8,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 38.1,
-    "Gradient boosting": 38.3,
-    "Chronos-Bolt": 36.6
+    "Ridge": 31.0,
+    "Gradient boosting": 36.8,
+    "Chronos-Bolt": 21.7
    },
    "band": [
-    13.0,
-    59.0
+    0.2,
+    45.1
    ],
    "last_days": [
-    49.4,
     52.3,
     33.9,
     49.3,
     29.7,
     39.2,
-    21.0
+    21.1,
+    9.7
    ]
   },
   {
@@ -1608,30 +1608,30 @@
    "provider": "AirGradient",
    "lat": 43.214577,
    "lon": 76.871985,
-   "now": 12.3,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 33.6,
-   "based_on": "2026-11-19",
-   "forecast": 31.3,
+   "now": 7.9,
+   "now_cat": "Good",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 15.7,
+   "based_on": "2026-11-20",
+   "forecast": 26.2,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 32.9,
-    "Gradient boosting": 31.7,
-    "Chronos-Bolt": 29.4
+    "Ridge": 26.2,
+    "Gradient boosting": 34.5,
+    "Chronos-Bolt": 17.8
    },
    "band": [
-    9.4,
-    50.6
+    0.6,
+    37.9
    ],
    "last_days": [
-    31.4,
     39.7,
     25.4,
     38.6,
     19.3,
     33.6,
-    12.5
+    15.7,
+    5.4
    ]
   },
   {
@@ -1640,30 +1640,30 @@
    "provider": "AirGradient",
    "lat": 43.2103,
    "lon": 76.9083,
-   "now": 22.4,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 31.7,
-   "based_on": "2026-11-19",
-   "forecast": 32.3,
+   "now": 8.8,
+   "now_cat": "Good",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 16.3,
+   "based_on": "2026-11-20",
+   "forecast": 26.3,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 33.4,
-    "Gradient boosting": 33.5,
-    "Chronos-Bolt": 30.1
+    "Ridge": 27.2,
+    "Gradient boosting": 34.1,
+    "Chronos-Bolt": 17.7
    },
    "band": [
-    9.5,
-    49.9
+    -1.1,
+    38.8
    ],
    "last_days": [
-    41.6,
     49.0,
     31.3,
     37.4,
     22.7,
     31.7,
-    15.9
+    16.3,
+    4.8
    ]
   },
   {
@@ -1672,30 +1672,30 @@
    "provider": "AirGradient",
    "lat": 43.2255,
    "lon": 76.8685,
-   "now": 23.0,
+   "now": 29.0,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 49.7,
-   "based_on": "2026-11-19",
-   "forecast": 43.1,
-   "forecast_cat": "Unhealthy for sensitive groups",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 28.6,
+   "based_on": "2026-11-20",
+   "forecast": 34.7,
+   "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 44.3,
-    "Gradient boosting": 38.8,
-    "Chronos-Bolt": 46.2
+    "Ridge": 36.0,
+    "Gradient boosting": 39.0,
+    "Chronos-Bolt": 29.2
    },
    "band": [
-    20.4,
-    71.3
+    4.7,
+    54.8
    ],
    "last_days": [
-    46.6,
     58.8,
     36.8,
     57.5,
     41.1,
     49.7,
-    24.2
+    28.6,
+    22.3
    ]
   },
   {
@@ -1704,30 +1704,30 @@
    "provider": "AirGradient",
    "lat": 43.1919,
    "lon": 76.9681,
-   "now": 29.3,
+   "now": 27.7,
    "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 24.6,
-   "based_on": "2026-11-19",
-   "forecast": 28.2,
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 23.5,
+   "based_on": "2026-11-20",
+   "forecast": 28.9,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 30.5,
-    "Gradient boosting": 31.3,
-    "Chronos-Bolt": 23.0
+    "Ridge": 30.2,
+    "Gradient boosting": 35.1,
+    "Chronos-Bolt": 21.4
    },
    "band": [
-    9.4,
-    40.2
+    12.3,
+    35.2
    ],
    "last_days": [
-    50.0,
     54.6,
     32.3,
     24.9,
     23.6,
     24.6,
-    19.5
+    23.5,
+    30.2
    ]
   },
   {
@@ -1736,30 +1736,30 @@
    "provider": "AirGradient",
    "lat": 43.201,
    "lon": 76.9136,
-   "now": 23.5,
-   "now_cat": "Moderate",
-   "last_reading": "2026-11-20 16:00:00",
-   "today": 27.1,
-   "based_on": "2026-11-19",
-   "forecast": 29.5,
+   "now": 7.2,
+   "now_cat": "Good",
+   "last_reading": "2026-11-21 00:00:00",
+   "today": 14.9,
+   "based_on": "2026-11-20",
+   "forecast": 24.1,
    "forecast_cat": "Moderate",
    "models": {
-    "Ridge": 30.6,
-    "Gradient boosting": 31.7,
-    "Chronos-Bolt": 26.1
+    "Ridge": 25.7,
+    "Gradient boosting": 31.2,
+    "Chronos-Bolt": 15.6
    },
    "band": [
-    8.4,
-    43.9
+    -0.6,
+    34.2
    ],
    "last_days": [
-    38.7,
     44.4,
     27.2,
     32.5,
     21.1,
     27.1,
-    14.9
+    14.9,
+    7.9
    ]
   },
   {
@@ -1771,18 +1771,18 @@
    "now": 185.8,
    "now_cat": "Very unhealthy",
    "last_reading": "2026-11-20 09:00:00",
-   "today": 188.7,
-   "based_on": "2026-11-19",
-   "forecast": 115.7,
+   "today": 77.7,
+   "based_on": "2026-11-20",
+   "forecast": 73.7,
    "forecast_cat": "Unhealthy",
    "models": {
-    "Ridge": 120.0,
-    "Gradient boosting": 65.8,
-    "Chronos-Bolt": 161.4
+    "Ridge": 74.1,
+    "Gradient boosting": 67.1,
+    "Chronos-Bolt": 80.0
    },
    "band": [
-    72.6,
-    246.2
+    14.1,
+    170.0
    ],
    "last_days": [
     113.6,

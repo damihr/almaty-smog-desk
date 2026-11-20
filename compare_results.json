@@ -3821,23 +3821,23 @@
   "mae_when_disagree": 12.43
  },
  "live": {
-  "based_on": "2026-11-19",
-  "for": "2026-11-20",
+  "based_on": "2026-11-20",
+  "for": "2026-11-21",
   "cut": 37.5,
-  "today": 101.3,
+  "today": 75.3,
   "pred": {
-   "Persistence": 101.3,
-   "Ridge": 74.6,
-   "Gradient boosting": 56.1,
-   "LSTM": 43.6,
-   "Chronos-Bolt (zero-shot)": 95.9,
-   "Ensemble (average)": 67.6
+   "Persistence": 75.3,
+   "Ridge": 64.9,
+   "Gradient boosting": 58.6,
+   "LSTM": 36.9,
+   "Chronos-Bolt (zero-shot)": 79.2,
+   "Ensemble (average)": 59.9
   },
   "chronos_band": [
-   68.8,
-   122.7
+   55.5,
+   103.3
   ],
-  "votes_indoors": 4,
+  "votes_indoors": 3,
   "n_models": 4
  }
 }

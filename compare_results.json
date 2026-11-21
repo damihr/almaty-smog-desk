@@ -3824,18 +3824,18 @@
   "based_on": "2026-11-21",
   "for": "2026-11-22",
   "cut": 37.5,
-  "today": 105.9,
+  "today": 110.2,
   "pred": {
-   "Persistence": 105.9,
-   "Ridge": 71.5,
-   "Gradient boosting": 51.2,
-   "LSTM": 41.0,
-   "Chronos-Bolt (zero-shot)": 99.1,
-   "Ensemble (average)": 65.7
+   "Persistence": 110.2,
+   "Ridge": 73.8,
+   "Gradient boosting": 51.7,
+   "LSTM": 40.5,
+   "Chronos-Bolt (zero-shot)": 101.4,
+   "Ensemble (average)": 66.9
   },
   "chronos_band": [
-   73.8,
-   124.7
+   75.0,
+   128.3
   ],
   "votes_indoors": 4,
   "n_models": 4

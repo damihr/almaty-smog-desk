@@ -2420,7 +2420,7 @@
    63.29999923706055,
    45.79999923706055,
    42.599998474121094,
-   48.599998474121094,
+   48.70000076293945,
    58.29999923706055,
    54.099998474121094,
    44.29999923706055,
@@ -3824,18 +3824,18 @@
   "based_on": "2026-11-22",
   "for": "2026-11-23",
   "cut": 37.5,
-  "today": 65.6,
+  "today": 93.8,
   "pred": {
-   "Persistence": 65.6,
-   "Ridge": 62.4,
-   "Gradient boosting": 67.7,
-   "LSTM": 41.2,
-   "Chronos-Bolt (zero-shot)": 75.6,
-   "Ensemble (average)": 61.7
+   "Persistence": 93.8,
+   "Ridge": 75.3,
+   "Gradient boosting": 65.9,
+   "LSTM": 46.8,
+   "Chronos-Bolt (zero-shot)": 92.9,
+   "Ensemble (average)": 70.2
   },
   "chronos_band": [
-   52.4,
-   101.0
+   70.4,
+   115.9
   ],
   "votes_indoors": 4,
   "n_models": 4

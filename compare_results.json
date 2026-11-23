@@ -3827,11 +3827,11 @@
   "today": 93.8,
   "pred": {
    "Persistence": 93.8,
-   "Ridge": 74.8,
-   "Gradient boosting": 59.1,
-   "LSTM": 43.7,
+   "Ridge": 74.6,
+   "Gradient boosting": 62.8,
+   "LSTM": 44.2,
    "Chronos-Bolt (zero-shot)": 92.9,
-   "Ensemble (average)": 67.6
+   "Ensemble (average)": 68.6
   },
   "chronos_band": [
    70.4,
